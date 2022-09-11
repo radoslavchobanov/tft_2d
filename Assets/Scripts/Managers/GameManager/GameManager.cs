@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public UnitManager UnitManager;
     public StoreManager StoreManager;
     public ResourceManager ResourceManager;
+    public RoundManager RoundManager;
 
     private void Awake()
     {

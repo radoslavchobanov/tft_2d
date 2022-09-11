@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameFightingState : GameState
+public class RoundBuyingState : RoundState
 {
-    public GameFightingState(GameController gameController, GameStateController stateController, State state) : base(gameController, stateController, state)
+    public RoundBuyingState(RoundManager roundManager, RoundStateController stateController, State state) : base(roundManager, stateController, state)
     {
     }
 
@@ -27,7 +27,7 @@ public class GameFightingState : GameState
     {
         base.PhysicalUpdates();
     }
-
+    
     public override void AnimationUpdates()
     {
         base.AnimationUpdates();

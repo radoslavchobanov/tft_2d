@@ -20,9 +20,9 @@ public partial class GameController : MonoBehaviour
         RegisterEvents();
     }
 
-    private void Start() 
+    private void Start()
     {
-        StateController.Start(GameStates.BuyingState);    
+        StateController.Start(GameStates.PlayState);
     }
 
     private void Update() 

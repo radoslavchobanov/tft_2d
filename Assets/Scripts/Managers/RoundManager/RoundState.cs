@@ -2,23 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameState
+public class RoundState
 {
-    protected GameController GameController;
-    protected GameStateController StateController;
+    protected RoundManager RoundManager;
+    protected RoundStateController StateController;
 
     protected float startTime;
 
     public enum State
     {
-        Play,
-        Pause,
+        Buying,
+        Fighting,
     }
     public State _state { get; private set; }
 
-    public GameState(GameController gameController, GameStateController stateController, State state)
+    public RoundState(RoundManager roundManager, RoundStateController stateController, State state)
     {
-        this.GameController = gameController;
+        this.RoundManager = roundManager;
         this.StateController = stateController;
         this._state = state;
     }
@@ -27,7 +27,7 @@ public class GameState
     {
         // Debug.Log(UnitController.gameObject + " Enters " + _state);
 
-        GameController.CurrentState = _state;
+        RoundManager.CurrentState = _state;
 
         startTime = Time.time;
     }

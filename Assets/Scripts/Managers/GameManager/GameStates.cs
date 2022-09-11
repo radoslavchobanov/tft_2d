@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class GameStates
 {
-    public GameBuyingState BuyingState { get; private set; }
-    public GameFightingState FightingState { get; private set; }
+    public GamePlayState PlayState { get; private set; }
+    public GamePauseState PauseStates { get; private set; }
 
     public GameStates(GameController gameController, GameStateController stateController)
     {
-        BuyingState = new GameBuyingState(gameController, stateController, GameState.State.Buying);
-        FightingState = new GameFightingState(gameController, stateController, GameState.State.Fighting);
+        PlayState = new GamePlayState(gameController, stateController, GameState.State.Play);
+        PauseStates = new GamePauseState(gameController, stateController, GameState.State.Pause);
     }
 }

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameBuyingState : GameState
+public class GamePauseState : GameState
 {
-    public GameBuyingState(GameController gameController, GameStateController stateController, State state) : base(gameController, stateController, state)
+    public GamePauseState(GameController gameController, GameStateController stateController, State state) : base(gameController, stateController, state)
     {
     }
 
@@ -27,7 +27,7 @@ public class GameBuyingState : GameState
     {
         base.PhysicalUpdates();
     }
-    
+
     public override void AnimationUpdates()
     {
         base.AnimationUpdates();
