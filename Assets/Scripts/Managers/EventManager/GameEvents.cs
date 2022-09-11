@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.EventSystems;
 
 public class GameEvents
 {
@@ -17,4 +16,9 @@ public class GameEvents
 
 
     public UnityEvent StoreRefreshed = new();
+    public UnityEvent XPBought = new();
+
+
+    public UnityEvent BuyRoundStart = new();
+    public UnityEvent FightRoundStart = new();
 }

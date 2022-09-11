@@ -12,6 +12,7 @@ public class UnitState
     public enum State
     {
         Idle,
+        Move,
         Selected,
     }
     public State _state { get; private set; }

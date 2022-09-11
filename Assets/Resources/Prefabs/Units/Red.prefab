@@ -113,6 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentState: 0
+  forwardDirection: {x: 0, y: 1, z: 0}
   _name: 
-  _movementSpeed: 0
+  _movementSpeed: 5
   _type: 0

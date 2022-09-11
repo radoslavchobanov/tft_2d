@@ -2,19 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitController : MonoBehaviour
+public partial class UnitController : MonoBehaviour
 {
     private Unit thisUnit { get { return GetComponent<Unit>(); } }
 
     [SerializeField] private UnitState.State _currentState;
+    private Unit _target = null;
     private Tile _occupiedTile;
 
     public UnitStateController StateController { get; private set; }
     public UnitStates UnitStates { get; private set; }
 
     public UnitState.State CurrentState { get { return _currentState; } set { _currentState = value; } }
+    public Unit Target => _target;
     public Tile OccupiedTile => _occupiedTile;
     public bool IsOnBench => OccupiedTile.IsBenchTile;
+
+    public Vector3 forwardDirection = new Vector3(0, 1, 0);
 
     protected virtual void Awake()
     {
@@ -22,6 +26,8 @@ public class UnitController : MonoBehaviour
         StateController = new();
         // initializing all the unit states  
         UnitStates = new(this, StateController);
+
+        RegisterEvents();
     }
 
     protected virtual void Start()
@@ -87,5 +93,12 @@ public class UnitController : MonoBehaviour
     {
         var pos = GameManager.GetMouseWorldPosition();
         this.gameObject.transform.position = new Vector3(pos.x + selectedOffset, pos.y + selectedOffset, gameObject.transform.position.z);
+    }
+
+    public void MoveForward(Vector2 forwardDirection)
+    {
+        transform.up = new Vector3(forwardDirection.x, forwardDirection.y, 0);
+        
+        this.gameObject.transform.position += new Vector3(forwardDirection.x, forwardDirection.y, 0).normalized * thisUnit.MovementSpeed * Time.deltaTime;
     }
 }

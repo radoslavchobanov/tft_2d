@@ -2,19 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoundFightingState : RoundState
+public class UnitMoveState : UnitState
 {
-    public RoundFightingState(RoundManager roundManager, RoundStateController stateController, State state) : base(roundManager, stateController, state)
+    public UnitMoveState(UnitController unitController, UnitStateController stateController, State state) : base(unitController, stateController, state)
     {
     }
 
     public override void Enter()
     {
         base.Enter();
-
-        GameManager.Singleton.RoundManager.IncreaseRoundCount();
-
-        GameEvents.FightRoundStart.Invoke();
     }
 
     public override void Exit()
@@ -30,6 +26,9 @@ public class RoundFightingState : RoundState
     public override void PhysicalUpdates()
     {
         base.PhysicalUpdates();
+
+        if (UnitController.Target == null)
+            UnitController.MoveForward(UnitController.forwardDirection);
     }
 
     public override void AnimationUpdates()

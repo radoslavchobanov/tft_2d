@@ -11,6 +11,8 @@ public class RoundBuyingState : RoundState
     public override void Enter()
     {
         base.Enter();
+
+        GameEvents.BuyRoundStart.Invoke();        
     }
 
     public override void Exit()

@@ -27,7 +27,7 @@ public class UnitIdleState : UnitState
     {
         base.PhysicalUpdates();
     }
-    
+
     public override void AnimationUpdates()
     {
         base.AnimationUpdates();
