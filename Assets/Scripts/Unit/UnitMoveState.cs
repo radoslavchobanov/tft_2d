@@ -21,14 +21,19 @@ public class UnitMoveState : UnitState
     public override void LogicalUpdates()
     {
         base.LogicalUpdates();
+
+        if (UnitController.Target._distance <= UnitController.thisUnit.AttackRange)
+            UnitController.StateController.ChangeState(UnitController.UnitStates.AttackState);
     }
 
     public override void PhysicalUpdates()
     {
         base.PhysicalUpdates();
 
-        if (UnitController.Target == null)
+        if (UnitController.Target.unit == null)
             UnitController.MoveForward(UnitController.forwardDirection);
+        else
+            UnitController.MoveTowardsTarget();
     }
 
     public override void AnimationUpdates()

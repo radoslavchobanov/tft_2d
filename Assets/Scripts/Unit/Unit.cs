@@ -13,10 +13,20 @@ public class Unit : UnitController
 {
     [SerializeField] protected string _name;
     [SerializeField] protected float _movementSpeed;
+    [SerializeField] protected float _attackDamage;
+    [SerializeField] protected float _attackSpeed;
+    [SerializeField] protected float _attackRange;
+    [SerializeField] protected float _health;
+    [SerializeField] protected float _mana;
     [SerializeField] protected UnitType _type;
 
     public string Name { get { return _name; } set { _name = value; } }
     public float MovementSpeed { get { return _movementSpeed; } set { _movementSpeed = value; } }
+    public float AttackDamage { get { return _attackDamage; } set { _attackDamage = value; } }
+    public float AttackSpeed { get { return _attackSpeed; } set { _attackSpeed = value; } }
+    public float AttackRange { get { return _attackRange; } set { _attackRange = value; } }
+    public float HP { get { return _health; } set { _health = value; } }
+    public float Mana { get { return _mana; } set { _mana = value; } }
     public UnitType Type { get { return _type; } set { _type = value; } }
 
     protected override void Awake()

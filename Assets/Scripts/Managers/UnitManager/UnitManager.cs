@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public partial class UnitManager : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public partial class UnitManager : MonoBehaviour
     public Unit SelectedUnit => _allyUnitSelected.Item2;
 
     private void Awake()
-    {
+    { 
     }
 
     private void Start()

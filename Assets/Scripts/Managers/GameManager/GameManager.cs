@@ -74,4 +74,9 @@ public class GameManager : MonoBehaviour
     {
         return Physics.Raycast(point, Vector3.back, out RaycastHit hit) ? hit.transform.gameObject : null;
     }
+
+    public static float GetDistanceBetweenObjects(GameObject firstObj, GameObject secondObj)
+    {
+        return Vector3.Distance(firstObj.transform.position, secondObj.transform.position);
+    }
 }

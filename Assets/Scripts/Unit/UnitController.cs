@@ -4,21 +4,23 @@ using UnityEngine;
 
 public partial class UnitController : MonoBehaviour
 {
-    private Unit thisUnit { get { return GetComponent<Unit>(); } }
+    public Unit thisUnit { get { return GetComponent<Unit>(); } }
 
     [SerializeField] private UnitState.State _currentState;
-    private Unit _target = null;
+    [SerializeField] private Target _target;
     private Tile _occupiedTile;
 
     public UnitStateController StateController { get; private set; }
     public UnitStates UnitStates { get; private set; }
 
     public UnitState.State CurrentState { get { return _currentState; } set { _currentState = value; } }
-    public Unit Target => _target;
+    public Target Target => _target;
     public Tile OccupiedTile => _occupiedTile;
     public bool IsOnBench => OccupiedTile.IsBenchTile;
 
     public Vector3 forwardDirection = new Vector3(0, 1, 0);
+    public float timeForNextAttack = 0f;
+    public bool isDead => thisUnit.HP <= 0;
 
     protected virtual void Awake()
     {
@@ -28,6 +30,16 @@ public partial class UnitController : MonoBehaviour
         UnitStates = new(this, StateController);
 
         RegisterEvents();
+
+        // Find better way of adding units to lists !!!
+        if (thisUnit.Type == UnitType.Enemy)
+        {
+            GameManager.Singleton.UnitManager.EnemyUnits.Add(thisUnit);
+        }
+        else
+        {
+            GameManager.Singleton.UnitManager.AllyUnits.Add(thisUnit);
+        }
     }
 
     protected virtual void Start()
@@ -38,6 +50,8 @@ public partial class UnitController : MonoBehaviour
 
     protected virtual void Update()
     {
+        DetectNearestEnemy();
+
         StateController.CurrentState.LogicalUpdates();
     }
 
@@ -49,6 +63,23 @@ public partial class UnitController : MonoBehaviour
     protected virtual void LateUpdate()
     {
         StateController.CurrentState.AnimationUpdates();
+    }
+
+    private void DetectNearestEnemy()
+    {
+        var enemies = thisUnit.Type == UnitType.Enemy ? GameManager.Singleton.UnitManager.AllyUnits : GameManager.Singleton.UnitManager.EnemyUnits;
+
+        foreach (var enemy in enemies)
+        {
+            // Debug.Log(GameManager.GetDistanceBetweenObjects(this.gameObject, enemy.gameObject));
+            var distanceToObject = GameManager.GetDistanceBetweenObjects(this.gameObject, enemy.gameObject);
+            if (distanceToObject <= Target.DetectionRange)
+            {
+                _target.unit = enemy;
+                _target._distance = distanceToObject;
+                _target._direction = (enemy.gameObject.transform.position - this.gameObject.transform.position).normalized;
+            }
+        }
     }
 
     public void InstantiateUnit()
@@ -95,10 +126,26 @@ public partial class UnitController : MonoBehaviour
         this.gameObject.transform.position = new Vector3(pos.x + selectedOffset, pos.y + selectedOffset, gameObject.transform.position.z);
     }
 
+    public void MoveTowardsDirection(Vector2 dir)
+    {
+        var direction = new Vector3(dir.x, dir.y, 0);
+        transform.up = direction;
+        this.gameObject.transform.position += direction.normalized * thisUnit.MovementSpeed * Time.deltaTime;
+    }
+
     public void MoveForward(Vector2 forwardDirection)
     {
-        transform.up = new Vector3(forwardDirection.x, forwardDirection.y, 0);
-        
-        this.gameObject.transform.position += new Vector3(forwardDirection.x, forwardDirection.y, 0).normalized * thisUnit.MovementSpeed * Time.deltaTime;
+        MoveTowardsDirection(forwardDirection);
+    }
+
+    public void MoveTowardsTarget()
+    {
+        MoveTowardsDirection(Target._direction);
+    }
+
+    public void AttackTarget()
+    {
+        Debug.Log("AttackTarget");
+        Target.unit.HP -= thisUnit.AttackDamage;
     }
 }

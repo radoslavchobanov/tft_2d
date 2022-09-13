@@ -11,9 +11,10 @@ public class UnitState
 
     public enum State
     {
+        Selected,
         Idle,
         Move,
-        Selected,
+        Attack,
     }
     public State _state { get; private set; }
 
@@ -36,6 +37,7 @@ public class UnitState
     public virtual void LogicalUpdates()
     {
         // Debug.Log(UnitController.gameObject + " is " + _state);
+        
     }
 
     public virtual void PhysicalUpdates()
