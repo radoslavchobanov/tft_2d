@@ -77,9 +77,4 @@ public partial class UnitManager : MonoBehaviour
 
         unit.SpawnUnit();
     }
-
-    private void DiedAllyUnit(Unit unit)
-    {
-        
-    }
 }

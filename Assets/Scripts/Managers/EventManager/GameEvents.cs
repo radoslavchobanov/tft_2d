@@ -11,7 +11,6 @@ public class GameEvents
     public UnityEvent<Unit> AllyUnitBought = new();
     public UnityEvent<Unit> AllyUnitInstantiated = new();
     public UnityEvent<Unit> AllyUnitSpawned = new();
-    public UnityEvent<Unit> AllyUnitDied = new();
 
     public UnityEvent<GameObject> AllyTileClicked = new();
 
