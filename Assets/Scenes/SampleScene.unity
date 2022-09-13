@@ -131,12 +131,32 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1672252964093237578, guid: 8a70fd28776b57149bb3d3b47fe8c309, type: 3}
+      propertyPath: _name
+      value: Black
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672252964093237578, guid: 8a70fd28776b57149bb3d3b47fe8c309, type: 3}
       propertyPath: _type
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1672252964093237578, guid: 8a70fd28776b57149bb3d3b47fe8c309, type: 3}
       propertyPath: _health
-      value: 100
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672252964093237578, guid: 8a70fd28776b57149bb3d3b47fe8c309, type: 3}
+      propertyPath: _attackRange
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672252964093237578, guid: 8a70fd28776b57149bb3d3b47fe8c309, type: 3}
+      propertyPath: _attackSpeed
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672252964093237578, guid: 8a70fd28776b57149bb3d3b47fe8c309, type: 3}
+      propertyPath: _attackDamage
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672252964093237578, guid: 8a70fd28776b57149bb3d3b47fe8c309, type: 3}
+      propertyPath: _movementSpeed
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7396697710822506044, guid: 8a70fd28776b57149bb3d3b47fe8c309, type: 3}
       propertyPath: m_RootOrder

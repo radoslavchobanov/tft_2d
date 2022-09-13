@@ -13,6 +13,7 @@ public class UnitAttackState : UnitState
         base.Enter();
 
         UnitController.timeForNextAttack = startTime + (1 / UnitController.thisUnit.AttackSpeed);
+        Debug.Log(UnitController.timeForNextAttack);
     }
 
     public override void Exit()
@@ -24,14 +25,15 @@ public class UnitAttackState : UnitState
     {
         base.LogicalUpdates();
 
-        Debug.Log(UnitController.timeForNextAttack);
+        // Debug.Log(UnitController.timeForNextAttack);
     }
 
     public override void PhysicalUpdates()
     {
         base.PhysicalUpdates();
+        
 
-        if (Time.time >= UnitController.timeForNextAttack && UnitController.Target.unit.isDead)
+        if (Time.time >= UnitController.timeForNextAttack && !UnitController.Target.unit.isDead)
         {
             UnitController.AttackTarget();
             UnitController.timeForNextAttack = Time.time + (1 / UnitController.thisUnit.AttackSpeed);

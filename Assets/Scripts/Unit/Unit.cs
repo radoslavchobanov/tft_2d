@@ -9,13 +9,21 @@ public enum UnitType
     Enemy,
 }
 
+public enum AttackType
+{
+    Melee,
+    Range,
+}
+
 public class Unit : UnitController
 {
+    [Header("Stats")]
     [SerializeField] protected string _name;
     [SerializeField] protected float _movementSpeed;
     [SerializeField] protected float _attackDamage;
     [SerializeField] protected float _attackSpeed;
     [SerializeField] protected float _attackRange;
+    [SerializeField] protected AttackType _attackType;
     [SerializeField] protected float _health;
     [SerializeField] protected float _mana;
     [SerializeField] protected UnitType _type;
@@ -25,6 +33,7 @@ public class Unit : UnitController
     public float AttackDamage { get { return _attackDamage; } set { _attackDamage = value; } }
     public float AttackSpeed { get { return _attackSpeed; } set { _attackSpeed = value; } }
     public float AttackRange { get { return _attackRange; } set { _attackRange = value; } }
+    public AttackType AttackType { get { return _attackType; } set { _attackType = value; } }
     public float HP { get { return _health; } set { _health = value; } }
     public float Mana { get { return _mana; } set { _mana = value; } }
     public UnitType Type { get { return _type; } set { _type = value; } }

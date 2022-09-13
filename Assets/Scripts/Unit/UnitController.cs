@@ -6,6 +6,8 @@ public partial class UnitController : MonoBehaviour
 {
     public Unit thisUnit { get { return GetComponent<Unit>(); } }
 
+    
+    [Header("Controller")]
     [SerializeField] private UnitState.State _currentState;
     [SerializeField] private Target _target;
     private Tile _occupiedTile;
@@ -146,6 +148,14 @@ public partial class UnitController : MonoBehaviour
     public void AttackTarget()
     {
         Debug.Log("AttackTarget");
-        Target.unit.HP -= thisUnit.AttackDamage;
+        
+        Target.unit.TakeDamage(thisUnit.AttackDamage);
+    }
+
+    public void TakeDamage(float damage)
+    {
+        Debug.Log("TakeDamage: " + this.name);
+
+        thisUnit.HP -= damage;
     }
 }
