@@ -21,6 +21,8 @@ public partial class MapManager : MonoBehaviour
     public List<Tile> AllyTilesOnBattleground = new(); // All Ally tiles on the battleground
     public List<Tile> EnemyTiles = new(); // All Ally tiles
 
+    private static Vector2 Graveyard = new Vector2(1000, 1000);
+
     private void Awake()
     {
         _mapController.CreateMap(MapContent, TilePrefab);
@@ -35,7 +37,7 @@ public partial class MapManager : MonoBehaviour
     {
     }
     
-    private void ChangeMaterialOnTiles(List<Tile> tileList, Material mat)
+    private static void ChangeMaterialOnTiles(List<Tile> tileList, Material mat)
     {
         MeshRenderer mesh = null;
         foreach (Tile tile in tileList)
@@ -65,5 +67,10 @@ public partial class MapManager : MonoBehaviour
             }
         }
         return null;
+    }
+    
+    public static void SendToGraveyard(Unit unit)
+    {
+        unit.transform.position = Graveyard;
     }
 }

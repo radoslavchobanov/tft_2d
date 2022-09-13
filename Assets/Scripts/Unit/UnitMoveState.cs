@@ -22,7 +22,7 @@ public class UnitMoveState : UnitState
     {
         base.LogicalUpdates();
 
-        if (UnitController.Target._distance <= UnitController.thisUnit.AttackRange)
+        if (UnitController.Target.GetUnit() != null && UnitController.Target.GetDistance() <= UnitController.thisUnit.AttackRange)
             UnitController.StateController.ChangeState(UnitController.UnitStates.AttackState);
     }
 
@@ -30,7 +30,7 @@ public class UnitMoveState : UnitState
     {
         base.PhysicalUpdates();
 
-        if (UnitController.Target.unit == null)
+        if (UnitController.Target.GetUnit() == null)
             UnitController.MoveForward(UnitController.forwardDirection);
         else
             UnitController.MoveTowardsTarget();

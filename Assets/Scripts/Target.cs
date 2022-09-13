@@ -1,11 +1,32 @@
 using UnityEngine;
 
 [System.Serializable]
-public struct Target
+public class Target
 {
-    public Unit unit;
-    public float _distance;
-    public Vector3 _direction;
+    [SerializeField] private Unit _unit;
+    [SerializeField] private float _distance;
+    [SerializeField] private Vector3 _direction;
 
     public static float DetectionRange = 15f;
+
+    public Target(Unit targetUnit, float distanceToTarget, Vector3 directionToTarget)
+    {
+        this._unit = targetUnit;
+        this._distance = distanceToTarget;
+        this._direction = directionToTarget;
+    }
+
+    public Unit GetUnit() => this._unit;
+    public void SetUnit(Unit unit) => this._unit = unit;
+    public float GetDistance() => this._distance;
+    public void SetDistance(float distance) => this._distance = distance;
+    public Vector3 GetDirection() => this._direction;
+    public void SetDirection(Vector3 direction) => this._direction = direction;
+
+    public void Remove()
+    {
+        this._unit = null;
+        this._distance = 0f;
+        this._direction = Vector3.zero;
+    }
 }

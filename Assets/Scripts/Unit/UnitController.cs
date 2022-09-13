@@ -6,7 +6,7 @@ public partial class UnitController : MonoBehaviour
 {
     public Unit thisUnit { get { return GetComponent<Unit>(); } }
 
-    
+
     [Header("Controller")]
     [SerializeField] private UnitState.State _currentState;
     [SerializeField] private Target _target;
@@ -16,7 +16,7 @@ public partial class UnitController : MonoBehaviour
     public UnitStates UnitStates { get; private set; }
 
     public UnitState.State CurrentState { get { return _currentState; } set { _currentState = value; } }
-    public Target Target => _target;
+    public Target Target { get { return _target; } set { _target = value; } }
     public Tile OccupiedTile => _occupiedTile;
     public bool IsOnBench => OccupiedTile.IsBenchTile;
 
@@ -77,9 +77,8 @@ public partial class UnitController : MonoBehaviour
             var distanceToObject = GameManager.GetDistanceBetweenObjects(this.gameObject, enemy.gameObject);
             if (distanceToObject <= Target.DetectionRange)
             {
-                _target.unit = enemy;
-                _target._distance = distanceToObject;
-                _target._direction = (enemy.gameObject.transform.position - this.gameObject.transform.position).normalized;
+                var direction = (enemy.gameObject.transform.position - this.gameObject.transform.position).normalized;
+                Target = new Target(enemy, distanceToObject, direction);
             }
         }
     }
@@ -131,7 +130,7 @@ public partial class UnitController : MonoBehaviour
     public void MoveTowardsDirection(Vector2 dir)
     {
         var direction = new Vector3(dir.x, dir.y, 0);
-        transform.up = direction;
+        // transform.up = direction;
         this.gameObject.transform.position += direction.normalized * thisUnit.MovementSpeed * Time.deltaTime;
     }
 
@@ -142,14 +141,21 @@ public partial class UnitController : MonoBehaviour
 
     public void MoveTowardsTarget()
     {
-        MoveTowardsDirection(Target._direction);
+        MoveTowardsDirection(Target.GetDirection());
     }
 
     public void AttackTarget()
     {
-        Debug.Log("AttackTarget");
-        
-        Target.unit.TakeDamage(thisUnit.AttackDamage);
+        // Coroutine to check if the attack animation is fully done, to deal dmg
+        var targetUnit = Target.GetUnit();
+
+        targetUnit.TakeDamage(thisUnit.AttackDamage);
+        if (targetUnit.HP <= 0)
+        {
+            targetUnit.Die();
+            // Target = null;
+            Target.Remove();
+        }
     }
 
     public void TakeDamage(float damage)
@@ -157,5 +163,14 @@ public partial class UnitController : MonoBehaviour
         Debug.Log("TakeDamage: " + this.name);
 
         thisUnit.HP -= damage;
+    }
+
+    public void Die()
+    {
+        Debug.Log("Die: " + this.name);
+
+        MapManager.SendToGraveyard(thisUnit);
+
+        thisUnit.gameObject.SetActive(false);
     }
 }

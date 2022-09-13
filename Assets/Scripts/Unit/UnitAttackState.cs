@@ -25,15 +25,15 @@ public class UnitAttackState : UnitState
     {
         base.LogicalUpdates();
 
-        // Debug.Log(UnitController.timeForNextAttack);
+        if (UnitController.Target.GetUnit() == null)
+            StateController.ChangeState(UnitController.UnitStates.MoveState);
     }
 
     public override void PhysicalUpdates()
     {
         base.PhysicalUpdates();
         
-
-        if (Time.time >= UnitController.timeForNextAttack && !UnitController.Target.unit.isDead)
+        if (Time.time >= UnitController.timeForNextAttack && !UnitController.Target.GetUnit().isDead)
         {
             UnitController.AttackTarget();
             UnitController.timeForNextAttack = Time.time + (1 / UnitController.thisUnit.AttackSpeed);

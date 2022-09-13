@@ -78,4 +78,11 @@ public partial class UnitManager
 
         // TODO: check if there is other 2 same units ... and combine them for lvl 2 unit
     }
+
+    private void OnAllyUnitDied(Unit diedUnit)
+    {
+        Debug.Log("OnAllyUnitDied: " + diedUnit.gameObject);
+
+        
+    }
 }

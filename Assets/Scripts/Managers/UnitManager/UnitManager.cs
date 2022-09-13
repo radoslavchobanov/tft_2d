@@ -13,8 +13,10 @@ public partial class UnitManager : MonoBehaviour
     public List<Unit> AllyUnits = new(); // All Ally units
     public List<Unit> AllyUnitsOnBench = new(); // All Ally units on the bench
     public List<Unit> AllyUnitsOnBattleground = new(); // All Ally units on the battleground
+    public List<Unit> AllyDeadUnits = new(); // All Ally units that has died
 
     public List<Unit> EnemyUnits = new(); // All Enemy units
+    public List<Unit> EnemyDeadUnits = new(); // All Enemy units that has dieds
 
     public bool IsAllyUnitSelected => _allyUnitSelected.Item1;
     public Unit SelectedUnit => _allyUnitSelected.Item2;
@@ -74,5 +76,10 @@ public partial class UnitManager : MonoBehaviour
         AllyUnitsOnBench.Add(unit);
 
         unit.SpawnUnit();
+    }
+
+    private void DiedAllyUnit(Unit unit)
+    {
+        
     }
 }
