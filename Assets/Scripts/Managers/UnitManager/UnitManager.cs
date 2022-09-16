@@ -22,7 +22,7 @@ public partial class UnitManager : MonoBehaviour
     public Unit SelectedUnit => _allyUnitSelected.Item2;
 
     private void Awake()
-    { 
+    {
     }
 
     private void Start()
@@ -56,7 +56,7 @@ public partial class UnitManager : MonoBehaviour
         if (tile.IsBenchTile == true)
             AddUnitToBenchList(unit);
         else AddUnitToBattlegroundList(unit);
-        
+
         _allyUnitSelected.Item1 = false;
         _allyUnitSelected.Item2 = null;
 
@@ -65,14 +65,13 @@ public partial class UnitManager : MonoBehaviour
 
     private void InstantiateAllyUnit(Unit unit)
     {
-        Units.Add(unit);
-        AllyUnits.Add(unit);
-
         unit.InstantiateUnit();
     }
 
     private void SpawnAllyUnit(Unit unit)
     {
+        Units.Add(unit);
+        AllyUnits.Add(unit);
         AllyUnitsOnBench.Add(unit);
 
         unit.SpawnUnit();

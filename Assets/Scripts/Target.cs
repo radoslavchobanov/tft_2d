@@ -9,6 +9,12 @@ public class Target
 
     public static float DetectionRange = 15f;
 
+    public Target()
+    {
+        this._unit = null;
+        this._distance = Mathf.Infinity;
+        this._direction = Vector3.zero;
+    }
     public Target(Unit targetUnit, float distanceToTarget, Vector3 directionToTarget)
     {
         this._unit = targetUnit;
@@ -26,7 +32,7 @@ public class Target
     public void Remove()
     {
         this._unit = null;
-        this._distance = 0f;
+        this._distance = Mathf.Infinity;
         this._direction = Vector3.zero;
     }
 }

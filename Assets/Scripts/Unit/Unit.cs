@@ -47,9 +47,6 @@ public class Unit : UnitController
     protected override void Start()
     {
         base.Start();
-
-        // this runs as soon as this Unit is Instantiated
-        GameManager.Singleton.EventManager.GameEvents.AllyUnitInstantiated.Invoke(this);
     }
 
     protected override void Update()

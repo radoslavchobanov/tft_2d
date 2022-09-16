@@ -26,22 +26,13 @@ public partial class UnitController : MonoBehaviour
 
     protected virtual void Awake()
     {
+        Target = new();
         // initializing the StateController
         StateController = new();
         // initializing all the unit states  
         UnitStates = new(this, StateController);
 
         RegisterEvents();
-
-        // Find better way of adding units to lists !!!
-        if (thisUnit.Type == UnitType.Enemy)
-        {
-            GameManager.Singleton.UnitManager.EnemyUnits.Add(thisUnit);
-        }
-        else
-        {
-            GameManager.Singleton.UnitManager.AllyUnits.Add(thisUnit);
-        }
     }
 
     protected virtual void Start()
@@ -71,12 +62,16 @@ public partial class UnitController : MonoBehaviour
     {
         var enemies = thisUnit.Type == UnitType.Enemy ? GameManager.Singleton.UnitManager.AllyUnits : GameManager.Singleton.UnitManager.EnemyUnits;
 
+        float shortestDistance = Mathf.Infinity;
+
         foreach (var enemy in enemies)
         {
-            // Debug.Log(GameManager.GetDistanceBetweenObjects(this.gameObject, enemy.gameObject));
-            var distanceToObject = GameManager.GetDistanceBetweenObjects(this.gameObject, enemy.gameObject);
-            if (distanceToObject <= Target.DetectionRange)
+            // Debug.Log(GameManager.GetDistanceBetweenObjects(thisUnit.gameObject, enemy.gameObject));
+            var distanceToObject = GameManager.GetDistanceBetweenObjects(thisUnit.gameObject, enemy.gameObject);
+
+            if (distanceToObject <= Target.DetectionRange && distanceToObject <= shortestDistance)
             {
+                shortestDistance = distanceToObject;
                 var direction = (enemy.gameObject.transform.position - this.gameObject.transform.position).normalized;
                 Target = new Target(enemy, distanceToObject, direction);
             }

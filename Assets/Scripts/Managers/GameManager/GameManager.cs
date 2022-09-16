@@ -77,6 +77,6 @@ public class GameManager : MonoBehaviour
 
     public static float GetDistanceBetweenObjects(GameObject firstObj, GameObject secondObj)
     {
-        return Vector3.Distance(firstObj.transform.position, secondObj.transform.position);
+        return Vector2.Distance(firstObj.transform.position, secondObj.transform.position);
     }
 }

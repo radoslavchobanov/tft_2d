@@ -112,6 +112,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee065d67fca2d4648b1bd738696df451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
-  movementSpeed: 0
-  _state: 1
+  _currentState: 0
+  _target:
+    _unit: {fileID: 0}
+    _distance: 0
+    _direction: {x: 0, y: 0, z: 0}
+  forwardDirection: {x: 0, y: 1, z: 0}
+  timeForNextAttack: 0
+  _name: 
+  _movementSpeed: 0
+  _attackDamage: 0
+  _attackSpeed: 0
+  _attackRange: 0
+  _attackType: 0
+  _health: 0
+  _mana: 0
+  _type: 1
