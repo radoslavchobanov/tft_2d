@@ -11,6 +11,9 @@ public partial class UnitManager
         GameEvents.AllyUnitBought.AddListener(OnAllyUnitBought);
         GameEvents.AllyUnitInstantiated.AddListener(OnAllyUnitInstantiated);
         GameEvents.AllyUnitSpawned.AddListener(OnAllyUnitSpawned);
+
+        GameEvents.FightRoundStart.AddListener(OnFightRoundStart);
+        GameEvents.BuyRoundStart.AddListener(OnBuyRoundStart);
     }
 
     private void OnAllyUnitClicked(Unit clickedUnit)
@@ -77,5 +80,24 @@ public partial class UnitManager
         // Debug.Log("OnAllyUnitSpawned: " + spawnedUnit.gameObject);
 
         // TODO: check if there is other 2 same units ... and combine them for lvl 2 unit
+    }
+
+    private void OnFightRoundStart()
+    {
+        foreach (var unit in AllyUnitsOnBattleground)
+        {
+            AllyUnitsStartPositions.Add(unit, unit.OccupiedTile);
+        }
+    }
+
+    private void OnBuyRoundStart()
+    {
+        foreach (var unit in AllyUnitsStartPositions.Keys)
+        {
+            AllyUnitsStartPositions.TryGetValue(unit, out Tile tile);
+            unit.PlaceUnit(tile);
+        }
+
+        AllyUnitsStartPositions.Clear();
     }
 }

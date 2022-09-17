@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7396697710822506044}
   - component: {fileID: 7396697710822506045}
   - component: {fileID: 4617520754537329878}
-  - component: {fileID: 1672252964093237578}
+  - component: {fileID: 42541965300991683}
   m_Layer: 0
   m_Name: Black
   m_TagString: AllyUnit
@@ -100,7 +100,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1672252964093237578
+--- !u!114 &42541965300991683
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,22 +109,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 7396697710822506046}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee065d67fca2d4648b1bd738696df451, type: 3}
+  m_Script: {fileID: 11500000, guid: d7b85abb7b5ac054eade2bf3a2291466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _currentState: 0
   _target:
-    unit: {fileID: 0}
-    _distance: 0
+    _unit: {fileID: 0}
+    _distance: Infinity
     _direction: {x: 0, y: 0, z: 0}
-  forwardDirection: {x: 0, y: 1, z: 0}
+  forwardDirection: {x: 0, y: -1, z: 0}
   timeForNextAttack: 0
-  _name: 
-  _movementSpeed: 0
-  _attackDamage: 0
-  _attackSpeed: 0
-  _attackRange: 0
+  _name: Black
+  _movementSpeed: 3
+  _attackDamage: 15
+  _attackSpeed: 0.8
+  _attackRange: 2
   _attackType: 0
-  _health: 300
+  _health: 200
   _mana: 0
   _type: 0

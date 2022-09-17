@@ -18,6 +18,8 @@ public partial class UnitManager : MonoBehaviour
     public List<Unit> EnemyUnits = new(); // All Enemy units
     public List<Unit> EnemyDeadUnits = new(); // All Enemy units that has dieds
 
+    public Dictionary<Unit, Tile> AllyUnitsStartPositions = new();
+
     public bool IsAllyUnitSelected => _allyUnitSelected.Item1;
     public Unit SelectedUnit => _allyUnitSelected.Item2;
 

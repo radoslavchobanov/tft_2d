@@ -12,7 +12,7 @@ public class RoundBuyingState : RoundState
     {
         base.Enter();
 
-        GameEvents.BuyRoundStart.Invoke();        
+        GameEvents.BuyRoundStart.Invoke();
     }
 
     public override void Exit()
@@ -29,7 +29,7 @@ public class RoundBuyingState : RoundState
     {
         base.PhysicalUpdates();
     }
-    
+
     public override void AnimationUpdates()
     {
         base.AnimationUpdates();

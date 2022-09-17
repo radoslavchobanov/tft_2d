@@ -4,11 +4,10 @@ using UnityEngine;
 
 public partial class UnitController
 {
-    private GameEvents GameEvents => GameManager.Singleton.EventManager.GameEvents;
     public void RegisterEvents()
     {
-        GameEvents.FightRoundStart.AddListener(OnFightRoundStart);
-        GameEvents.BuyRoundStart.AddListener(OnBuyRoundStart);
+        // GameManager.Singleton.EventManager.GameEvents.FightRoundStart.AddListener(OnFightRoundStart);
+        // GameManager.Singleton.EventManager.GameEvents.BuyRoundStart.AddListener(OnBuyRoundStart);
     }
     private void OnFightRoundStart()
     {

@@ -130,35 +130,35 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1672252964093237578, guid: 8a70fd28776b57149bb3d3b47fe8c309, type: 3}
+    - target: {fileID: 0}
       propertyPath: _name
       value: Black
       objectReference: {fileID: 0}
-    - target: {fileID: 1672252964093237578, guid: 8a70fd28776b57149bb3d3b47fe8c309, type: 3}
+    - target: {fileID: 0}
       propertyPath: _type
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1672252964093237578, guid: 8a70fd28776b57149bb3d3b47fe8c309, type: 3}
+    - target: {fileID: 0}
       propertyPath: _health
       value: 300
       objectReference: {fileID: 0}
-    - target: {fileID: 1672252964093237578, guid: 8a70fd28776b57149bb3d3b47fe8c309, type: 3}
+    - target: {fileID: 0}
       propertyPath: _attackRange
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1672252964093237578, guid: 8a70fd28776b57149bb3d3b47fe8c309, type: 3}
+    - target: {fileID: 0}
       propertyPath: _attackSpeed
       value: 0.8
       objectReference: {fileID: 0}
-    - target: {fileID: 1672252964093237578, guid: 8a70fd28776b57149bb3d3b47fe8c309, type: 3}
+    - target: {fileID: 0}
       propertyPath: _attackDamage
       value: 30
       objectReference: {fileID: 0}
-    - target: {fileID: 1672252964093237578, guid: 8a70fd28776b57149bb3d3b47fe8c309, type: 3}
+    - target: {fileID: 0}
       propertyPath: _currentState
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1672252964093237578, guid: 8a70fd28776b57149bb3d3b47fe8c309, type: 3}
+    - target: {fileID: 0}
       propertyPath: _movementSpeed
       value: 4
       objectReference: {fileID: 0}
@@ -218,8 +218,7 @@ PrefabInstance:
       propertyPath: m_TagString
       value: EnemyUnit
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1672252964093237578, guid: 8a70fd28776b57149bb3d3b47fe8c309, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a70fd28776b57149bb3d3b47fe8c309, type: 3}
 --- !u!1 &519420028
 GameObject:
@@ -321,39 +320,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9077424292362843967, guid: aed860e789c55614a8574fcf0f2147ae, type: 3}
   m_PrefabInstance: {fileID: 4965979795335388346}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1514017406 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7396697710822506046, guid: 8a70fd28776b57149bb3d3b47fe8c309, type: 3}
-  m_PrefabInstance: {fileID: 236912377}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1514017411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1514017406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7b85abb7b5ac054eade2bf3a2291466, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _currentState: 0
-  _target:
-    _unit: {fileID: 0}
-    _distance: Infinity
-    _direction: {x: 0, y: 0, z: 0}
-  forwardDirection: {x: 0, y: -1, z: 0}
-  timeForNextAttack: 0
-  _name: Black
-  _movementSpeed: 8
-  _attackDamage: 15
-  _attackSpeed: 0.8
-  _attackRange: 2
-  _attackType: 0
-  _health: 200
-  _mana: 0
-  _type: 0
 --- !u!1 &1952271596
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,7 +444,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -609,21 +574,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aed860e789c55614a8574fcf0f2147ae, type: 3}
---- !u!1 &4965979795335388347 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4646979236378487546, guid: aed860e789c55614a8574fcf0f2147ae, type: 3}
-  m_PrefabInstance: {fileID: 4965979795335388346}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4965979795335388348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4965979795335388347}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65a676181ef01144983d270b5d941d92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _currentState: 0

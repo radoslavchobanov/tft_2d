@@ -177,6 +177,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4646979236378487543}
   - component: {fileID: 56925701863910548}
+  - component: {fileID: 8953484810599901802}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -227,6 +228,19 @@ MonoBehaviour:
   StoreManager: {fileID: 6257009071859072031}
   ResourceManager: {fileID: 2697948745787118124}
   RoundManager: {fileID: 33772714243237273}
+--- !u!114 &8953484810599901802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4646979236378487546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65a676181ef01144983d270b5d941d92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentState: 0
 --- !u!1 &4646979236883633430
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,7 +478,9 @@ MonoBehaviour:
   AllyUnits: []
   AllyUnitsOnBench: []
   AllyUnitsOnBattleground: []
+  AllyDeadUnits: []
   EnemyUnits: []
+  EnemyDeadUnits: []
 --- !u!1001 &2763267174181230114
 PrefabInstance:
   m_ObjectHideFlags: 0

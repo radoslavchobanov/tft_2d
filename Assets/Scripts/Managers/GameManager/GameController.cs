@@ -5,13 +5,12 @@ using UnityEngine;
 public partial class GameController : MonoBehaviour
 {
     [SerializeField] private GameState.State _currentState;
-    
+
     public GameStateController StateController { get; private set; }
     public GameStates GameStates { get; private set; }
-    
     public GameState.State CurrentState { get { return _currentState; } set { _currentState = value; } }
 
-    private void Awake() 
+    private void Awake()
     {
         StateController = new();
 
@@ -25,17 +24,17 @@ public partial class GameController : MonoBehaviour
         StateController.Start(GameStates.PlayState);
     }
 
-    private void Update() 
+    private void Update()
     {
         StateController.CurrentState.LogicalUpdates();
     }
 
-    private void FixedUpdate() 
+    private void FixedUpdate()
     {
         StateController.CurrentState.PhysicalUpdates();
     }
 
-    private void LateUpdate() 
+    private void LateUpdate()
     {
         StateController.CurrentState.AnimationUpdates();
     }
