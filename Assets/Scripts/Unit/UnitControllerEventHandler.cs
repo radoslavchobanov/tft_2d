@@ -6,12 +6,13 @@ public partial class UnitController
 {
     public void RegisterEvents()
     {
-        // GameManager.Singleton.EventManager.GameEvents.FightRoundStart.AddListener(OnFightRoundStart);
-        // GameManager.Singleton.EventManager.GameEvents.BuyRoundStart.AddListener(OnBuyRoundStart);
+        GameManager.Singleton.EventManager.GameEvents.FightRoundStart.AddListener(OnFightRoundStart);
+        GameManager.Singleton.EventManager.GameEvents.BuyRoundStart.AddListener(OnBuyRoundStart);
     }
     private void OnFightRoundStart()
     {
-        StateController.ChangeState(UnitStates.MoveState);
+        if (IsOnBench == false) 
+            StateController.ChangeState(UnitStates.MoveState);
     }
 
     private void OnBuyRoundStart()

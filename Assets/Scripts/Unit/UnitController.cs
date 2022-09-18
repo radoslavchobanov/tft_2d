@@ -10,7 +10,7 @@ public partial class UnitController : MonoBehaviour
     [Header("Controller")]
     [SerializeField] private UnitState.State _currentState;
     [SerializeField] private Target _target;
-    private Tile _occupiedTile;
+    [SerializeField] private Tile _occupiedTile;
 
     public UnitStateController StateController { get; private set; }
     public UnitStates UnitStates { get; private set; }

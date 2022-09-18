@@ -13,7 +13,7 @@ public class UnitAttackState : UnitState
         base.Enter();
 
         UnitController.timeForNextAttack = startTime + (1 / UnitController.thisUnit.AttackSpeed);
-        Debug.Log(UnitController.timeForNextAttack);
+        // Debug.Log(UnitController.timeForNextAttack);
     }
 
     public override void Exit()
