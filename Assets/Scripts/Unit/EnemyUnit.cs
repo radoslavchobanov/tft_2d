@@ -27,6 +27,7 @@ public class EnemyUnit : Unit
 
     private void OnBuyRoundStart()
     {
+        RoundReset();
         PlaceUnit(startTile);
     }
 }

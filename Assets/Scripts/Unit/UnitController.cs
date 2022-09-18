@@ -43,8 +43,6 @@ public partial class UnitController : MonoBehaviour
 
     protected virtual void Update()
     {
-        DetectNearestEnemy();
-
         StateController.CurrentState.LogicalUpdates();
     }
 
@@ -58,7 +56,7 @@ public partial class UnitController : MonoBehaviour
         StateController.CurrentState.AnimationUpdates();
     }
 
-    private void DetectNearestEnemy()
+    public void DetectNearestEnemy()
     {
         var enemies = thisUnit.Type == UnitType.Enemy ? GameManager.Singleton.UnitManager.AllyUnits : GameManager.Singleton.UnitManager.EnemyUnits;
 
@@ -69,7 +67,7 @@ public partial class UnitController : MonoBehaviour
             // Debug.Log(GameManager.GetDistanceBetweenObjects(thisUnit.gameObject, enemy.gameObject));
             var distanceToObject = GameManager.GetDistanceBetweenObjects(thisUnit.gameObject, enemy.gameObject);
 
-            if (distanceToObject <= Target.DetectionRange && distanceToObject <= shortestDistance)
+            if (distanceToObject <= Target.DetectionRange && distanceToObject <= shortestDistance && enemy.IsOnBench == false)
             {
                 shortestDistance = distanceToObject;
                 var direction = (enemy.gameObject.transform.position - this.gameObject.transform.position).normalized;
@@ -167,5 +165,10 @@ public partial class UnitController : MonoBehaviour
         MapManager.SendToGraveyard(thisUnit);
 
         thisUnit.gameObject.SetActive(false);
+    }
+
+    public void RoundReset()
+    {
+        Target.Remove();
     }
 }

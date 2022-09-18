@@ -41,7 +41,6 @@ public class Unit : UnitController
     protected override void Awake()
     {
         base.Awake();
-        InitializeUnitStats();
     }
 
     protected override void Start()
@@ -62,10 +61,6 @@ public class Unit : UnitController
     protected override void LateUpdate()
     {
         base.LateUpdate();
-    }
-
-    protected virtual void InitializeUnitStats()
-    {
     }
 
     public bool CanBeSpawnedOnBench() => GameManager.Singleton.MapManager.GetNextAvailableTileOnBench() != null;

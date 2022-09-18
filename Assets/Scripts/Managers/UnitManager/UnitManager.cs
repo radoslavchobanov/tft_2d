@@ -78,4 +78,12 @@ public partial class UnitManager : MonoBehaviour
 
         unit.SpawnUnit();
     }
+
+    private void RoundResetUnit(Unit unit)
+    {
+        unit.RoundReset();
+
+        AllyUnitsStartPositions.TryGetValue(unit, out Tile startTile);
+        unit.PlaceUnit(startTile);
+    }
 }

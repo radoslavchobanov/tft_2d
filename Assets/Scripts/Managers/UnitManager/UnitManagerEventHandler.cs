@@ -94,8 +94,7 @@ public partial class UnitManager
     {
         foreach (var unit in AllyUnitsStartPositions.Keys)
         {
-            AllyUnitsStartPositions.TryGetValue(unit, out Tile tile);
-            unit.PlaceUnit(tile);
+            RoundResetUnit(unit);
         }
 
         AllyUnitsStartPositions.Clear();

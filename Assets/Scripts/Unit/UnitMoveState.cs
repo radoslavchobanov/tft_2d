@@ -21,6 +21,8 @@ public class UnitMoveState : UnitState
     public override void LogicalUpdates()
     {
         base.LogicalUpdates();
+        
+        UnitController.DetectNearestEnemy();
 
         if (UnitController.Target.GetUnit() != null && UnitController.Target.GetDistance() <= UnitController.thisUnit.AttackRange)
             UnitController.StateController.ChangeState(UnitController.UnitStates.AttackState);
