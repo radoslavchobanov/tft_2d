@@ -7,6 +7,9 @@ public class Tile : MonoBehaviour
     private int _x = 0;
     private int _y = 0;
 
+    public int X => _x;
+    public int Y => _y;
+
     public bool occupied = false;
 
     public bool IsBenchTile => _y == 0;

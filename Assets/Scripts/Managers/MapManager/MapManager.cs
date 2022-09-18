@@ -36,7 +36,7 @@ public partial class MapManager : MonoBehaviour
     private void Update()
     {
     }
-    
+
     private static void ChangeMaterialOnTiles(List<Tile> tileList, Material mat)
     {
         MeshRenderer mesh = null;
@@ -60,15 +60,20 @@ public partial class MapManager : MonoBehaviour
     public Tile GetNextAvailableTileOnBench()
     {
         foreach (Tile tile in AllyTilesOnBench)
-        {
             if (tile.occupied == false)
-            {
                 return tile;
-            }
-        }
         return null;
     }
-    
+
+    public Tile GetTile(int x, int y)
+    {
+        foreach (Tile tile in Tiles)
+            if (tile.X == x && tile.Y == y)
+                return tile;
+        return null;
+    }
+
+    // TODO: Think if this should be in UnitManager
     public static void SendToGraveyard(Unit unit)
     {
         unit.transform.position = Graveyard;
