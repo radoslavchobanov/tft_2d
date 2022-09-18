@@ -22,7 +22,7 @@ public partial class UnitController : MonoBehaviour
 
     public Vector3 forwardDirection = new Vector3(0, 1, 0);
     public float timeForNextAttack = 0f;
-    public bool isDead => thisUnit.HP.Current <= 0;
+    public bool isDead => thisUnit.HP <= 0;
 
     protected virtual void Awake()
     {
@@ -143,7 +143,7 @@ public partial class UnitController : MonoBehaviour
         var targetUnit = Target.GetUnit();
 
         targetUnit.TakeDamage(thisUnit.AttackDamage);
-        if (targetUnit.HP.Current <= 0)
+        if (targetUnit.HP <= 0)
         {
             Debug.Log(targetUnit.Name + " is killed by " + thisUnit.Name);
             targetUnit.Die();
@@ -154,7 +154,7 @@ public partial class UnitController : MonoBehaviour
     {
         // Debug.Log("TakeDamage: " + this.name);
 
-        thisUnit.HP.Current -= damage;
+        thisUnit.HP -= damage;
     }
 
     public void Die()

@@ -121,13 +121,29 @@ MonoBehaviour:
   forwardDirection: {x: 0, y: -1, z: 0}
   timeForNextAttack: 0
   _name: Black
-  _movementSpeed: 3
-  _attackDamage: 15
-  _attackSpeed: 0.8
-  _attackRange: 2
+  _movementSpeed:
+    _base: 3
+    _baseBuffed: 0
+    _current: 0
+  _attackDamage:
+    _base: 18
+    _baseBuffed: 0
+    _current: 0
+  _attackSpeed:
+    _base: 0.8
+    _baseBuffed: 0
+    _current: 0
+  _attackRange:
+    _base: 2
+    _baseBuffed: 0
+    _current: 0
   _attackType: 0
   _health:
     _base: 200
+    _baseBuffed: 0
     _current: 0
-  _mana: 0
+  _mana:
+    _base: 0
+    _baseBuffed: 0
+    _current: 0
   _type: 0

@@ -121,14 +121,29 @@ MonoBehaviour:
   forwardDirection: {x: 0, y: 1, z: 0}
   timeForNextAttack: 0
   _name: Yellow
-  _movementSpeed: 6
-  _attackDamage: 10
-  _attackSpeed: 1.2
-  _attackRange: 6
+  _movementSpeed:
+    _base: 6
+    _baseBuffed: 0
+    _current: 0
+  _attackDamage:
+    _base: 12
+    _baseBuffed: 0
+    _current: 0
+  _attackSpeed:
+    _base: 1.2
+    _baseBuffed: 0
+    _current: 0
+  _attackRange:
+    _base: 6
+    _baseBuffed: 0
+    _current: 0
   _attackType: 1
   _health:
     _base: 80
     _baseBuffed: 0
     _current: 0
-  _mana: 0
+  _mana:
+    _base: 0
+    _baseBuffed: 0
+    _current: 0
   _type: 1

@@ -13,12 +13,14 @@ public class Attribute
     public float BaseBuffed { get { return _baseBuffed; } set { _baseBuffed = value; } }
     public float Current { get { return _current; } set { _current = value; } }
 
-    public void Initialize()
+    public bool Initialize()
     {
-        if (_base == 0) Debug.Log("You have not set value in the Editor !!!");
+        if (_base == 0) return false;
 
         _baseBuffed = _base;
         _current = _base;
+
+        return true;
     }
 
     public void RoundReset()

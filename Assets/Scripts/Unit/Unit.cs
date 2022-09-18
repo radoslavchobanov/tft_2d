@@ -17,32 +17,35 @@ public enum AttackType
 
 public class Unit : UnitController
 {
+    private Dictionary<string, Attribute> _attributes = new(); // TODO: find better way of adding the attributes
+
     [Header("Stats")]
     [SerializeField] protected string _name;
-    [SerializeField] protected float _movementSpeed;
-    [SerializeField] protected float _attackDamage;
-    [SerializeField] protected float _attackSpeed;
-    [SerializeField] protected float _attackRange;
+    [SerializeField] protected Attribute _movementSpeed;
+    [SerializeField] protected Attribute _attackDamage;
+    [SerializeField] protected Attribute _attackSpeed;
+    [SerializeField] protected Attribute _attackRange;
     [SerializeField] protected AttackType _attackType;
     [SerializeField] protected Attribute _health;
-    [SerializeField] protected float _mana;
+    [SerializeField] protected Attribute _mana;
     [SerializeField] protected UnitType _type;
 
     public string Name { get { return _name; } set { _name = value; } }
-    public float MovementSpeed { get { return _movementSpeed; } set { _movementSpeed = value; } }
-    public float AttackDamage { get { return _attackDamage; } set { _attackDamage = value; } }
-    public float AttackSpeed { get { return _attackSpeed; } set { _attackSpeed = value; } }
-    public float AttackRange { get { return _attackRange; } set { _attackRange = value; } }
-    public AttackType AttackType { get { return _attackType; } set { _attackType = value; } }
-    public Attribute HP { get { return _health; } set { _health = value; } }
-    public float Mana { get { return _mana; } set { _mana = value; } }
+    public float MovementSpeed { get { return _movementSpeed.Current; } }
+    public float AttackDamage { get { return _attackDamage.Current; } }
+    public float AttackSpeed { get { return _attackSpeed.Current; } }
+    public float AttackRange { get { return _attackRange.Current; } }
+    public AttackType AttackType { get { return _attackType; } }
+    public float HP { get { return _health.Current; } set { _health.Current = value; } }
+    public float Mana { get { return _mana.Current; } }
     public UnitType Type { get { return _type; } set { _type = value; } }
 
     protected override void Awake()
     {
         base.Awake();
 
-        HP.Initialize();
+        AddAllAttributes();
+        InitializeAttributes();
     }
 
     protected override void Start()
@@ -65,9 +68,33 @@ public class Unit : UnitController
         base.LateUpdate();
     }
 
+    private void AddAllAttributes()
+    {
+        _attributes.Add(nameof(_movementSpeed), _movementSpeed);
+        _attributes.Add(nameof(_attackDamage), _attackDamage);
+        _attributes.Add(nameof(_attackRange), _attackRange);
+        _attributes.Add(nameof(_attackSpeed), _attackSpeed);
+        _attributes.Add(nameof(_health), _health);
+        _attributes.Add(nameof(_mana), _mana);
+    }
+
+    private void InitializeAttributes()
+    {
+        foreach (var attribute in _attributes)
+        {
+            if (attribute.Value.Initialize() == false)
+            {
+                Debug.LogWarning("You have not set value for: " + attribute.Key);
+            }
+        }
+    }
+
     public void RoundResetAttributes()
     {
-        HP.RoundReset();
+        foreach (var attribute in _attributes)
+        {
+            attribute.Value.RoundReset();
+        }
     }
 
     public bool CanBeSpawnedOnBench() => GameManager.Singleton.MapManager.GetNextAvailableTileOnBench() != null;
