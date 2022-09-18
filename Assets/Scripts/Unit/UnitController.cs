@@ -22,7 +22,7 @@ public partial class UnitController : MonoBehaviour
 
     public Vector3 forwardDirection = new Vector3(0, 1, 0);
     public float timeForNextAttack = 0f;
-    public bool isDead => thisUnit.HP <= 0;
+    public bool isDead => thisUnit.HP.Current <= 0;
 
     protected virtual void Awake()
     {
@@ -143,32 +143,33 @@ public partial class UnitController : MonoBehaviour
         var targetUnit = Target.GetUnit();
 
         targetUnit.TakeDamage(thisUnit.AttackDamage);
-        if (targetUnit.HP <= 0)
+        if (targetUnit.HP.Current <= 0)
         {
+            Debug.Log(targetUnit.Name + " is killed by " + thisUnit.Name);
             targetUnit.Die();
-            // Target = null;
-            Target.Remove();
         }
     }
 
     public void TakeDamage(float damage)
     {
-        Debug.Log("TakeDamage: " + this.name);
+        // Debug.Log("TakeDamage: " + this.name);
 
-        thisUnit.HP -= damage;
+        thisUnit.HP.Current -= damage;
     }
 
     public void Die()
     {
-        Debug.Log("Die: " + this.name);
+        // Debug.Log("Die: " + this.name);
 
         MapManager.SendToGraveyard(thisUnit);
 
         thisUnit.gameObject.SetActive(false);
     }
 
-    public void RoundReset()
+    public void RoundResetUnit()
     {
+        gameObject.SetActive(true);
         Target.Remove();
+        thisUnit.RoundResetAttributes();
     }
 }

@@ -117,14 +117,18 @@ MonoBehaviour:
     _unit: {fileID: 0}
     _distance: Infinity
     _direction: {x: 0, y: 0, z: 0}
+  _occupiedTile: {fileID: 0}
   forwardDirection: {x: 0, y: 1, z: 0}
   timeForNextAttack: 0
   _name: Yellow
   _movementSpeed: 6
-  _attackDamage: 20
+  _attackDamage: 10
   _attackSpeed: 1.2
   _attackRange: 6
   _attackType: 1
-  _health: 80
+  _health:
+    _base: 80
+    _baseBuffed: 0
+    _current: 0
   _mana: 0
   _type: 1

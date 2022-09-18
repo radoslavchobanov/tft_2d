@@ -123,60 +123,28 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &236912377
+--- !u!1001 &301140373
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 0}
-      propertyPath: _name
-      value: Black
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: _type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: _health
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: _attackRange
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: _attackSpeed
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: _attackDamage
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: _currentState
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: _movementSpeed
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 7396697710822506044, guid: 8a70fd28776b57149bb3d3b47fe8c309, type: 3}
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7396697710822506044, guid: 8a70fd28776b57149bb3d3b47fe8c309, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7396697710822506044, guid: 8a70fd28776b57149bb3d3b47fe8c309, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7396697710822506044, guid: 8a70fd28776b57149bb3d3b47fe8c309, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7396697710822506044, guid: 8a70fd28776b57149bb3d3b47fe8c309, type: 3}
       propertyPath: m_LocalRotation.w
@@ -209,14 +177,6 @@ PrefabInstance:
     - target: {fileID: 7396697710822506046, guid: 8a70fd28776b57149bb3d3b47fe8c309, type: 3}
       propertyPath: m_Name
       value: Black
-      objectReference: {fileID: 0}
-    - target: {fileID: 7396697710822506046, guid: 8a70fd28776b57149bb3d3b47fe8c309, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7396697710822506046, guid: 8a70fd28776b57149bb3d3b47fe8c309, type: 3}
-      propertyPath: m_TagString
-      value: EnemyUnit
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a70fd28776b57149bb3d3b47fe8c309, type: 3}

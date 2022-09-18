@@ -25,8 +25,11 @@ public class UnitAttackState : UnitState
     {
         base.LogicalUpdates();
 
-        if (UnitController.Target.GetUnit() == null)
+        if (UnitController.Target.GetUnit().isDead == true)
+        {
+            UnitController.Target.Remove();
             StateController.ChangeState(UnitController.UnitStates.MoveState);
+        }
     }
 
     public override void PhysicalUpdates()
