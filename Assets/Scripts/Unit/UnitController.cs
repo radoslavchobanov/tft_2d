@@ -1,28 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public partial class UnitController : MonoBehaviour
 {
-    public Unit thisUnit { get { return GetComponent<Unit>(); } }
-
-
+    [Header("Object Components")]
+    public Slider HpBar;
     [Header("Controller")]
     [SerializeField] private UnitState.State _currentState;
     [SerializeField] private Target _target;
     [SerializeField] private Tile _occupiedTile;
 
-    public UnitStateController StateController { get; private set; }
-    public UnitStates UnitStates { get; private set; }
-
     public UnitState.State CurrentState { get { return _currentState; } set { _currentState = value; } }
     public Target Target { get { return _target; } set { _target = value; } }
     public Tile OccupiedTile => _occupiedTile;
-    public bool IsOnBench => OccupiedTile.IsBenchTile;
 
-    public Vector3 forwardDirection = new Vector3(0, 1, 0);
-    public float timeForNextAttack = 0f;
-    public bool isDead => thisUnit.HP <= 0;
+    public UnitStateController StateController { get; private set; }
+    public UnitStates UnitStates { get; private set; }
+
+    [HideInInspector] public Vector3 forwardDirection = new Vector3(0, 1, 0);
+    [HideInInspector] public float timeForNextAttack = 0f;
+    [HideInInspector] public bool isDead => thisUnit.HP <= 0;
+    [HideInInspector] public bool IsOnBench => OccupiedTile.IsBenchTile;
+
+    public Unit thisUnit { get { return GetComponent<Unit>(); } }
 
     protected virtual void Awake()
     {
@@ -155,6 +157,8 @@ public partial class UnitController : MonoBehaviour
         // Debug.Log("TakeDamage: " + this.name);
 
         thisUnit.HP -= damage;
+
+        HpBar.value -= damage;
     }
 
     public void Die()

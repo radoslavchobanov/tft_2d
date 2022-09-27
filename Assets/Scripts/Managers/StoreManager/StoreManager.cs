@@ -22,8 +22,13 @@ public class StoreManager : MonoBehaviour
 
     private static void CreateStoreItems()
     {
-        foreach (var obj in ResourceManager.AllUnitPrefabs)
+        foreach (var obj in ResourceManager.AllAllyUnitPrefabs)
         {
+            if (obj == null)
+            {
+                Debug.Log("HERERERERR");
+                return;
+            }
             StoreItem storeItem = new StoreItem(obj.name);
             StoreItems.Add(storeItem);
         }

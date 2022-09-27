@@ -5,13 +5,13 @@ using System.Linq;
 
 public class ResourceManager : MonoBehaviour
 {
-    public static List<GameObject> AllUnitPrefabs = new();
-    public static List<Sprite> AllUnitSprites = new();
+    public static List<GameObject> AllAllyUnitPrefabs = new();
+    public static List<Sprite> AllAllyUnitSprites = new();
 
     private void Awake()
     {
-        AllUnitPrefabs = GetAllResourcesGameobjects(Constants.UNIT_PREFABS_FOLDER_PATH);
-        AllUnitSprites = GetAllResourcesSprites(Constants.UNIT_SPRITES_FOLDER_PATH);
+        AllAllyUnitPrefabs = GetAllResourcesGameobjects(Constants.ALLY_UNITS_PREFABS_FOLDER_PATH);
+        AllAllyUnitSprites = GetAllResourcesSprites(Constants.ALLY_UNITS_SPRITES_FOLDER_PATH);
     }
 
     private void Start()
@@ -20,7 +20,7 @@ public class ResourceManager : MonoBehaviour
 
     public static Sprite GetUnitSprite(string unitName)
     {
-        foreach (var sprite in AllUnitSprites)
+        foreach (var sprite in AllAllyUnitSprites)
             if (sprite.name == unitName) return sprite;
         return null;
     }
@@ -42,6 +42,6 @@ public class ResourceManager : MonoBehaviour
 
     public static GameObject GetUnitPrefab(string unitName)
     {
-        return GetAssetResource(Constants.UNIT_PREFABS_FOLDER_PATH + unitName);
+        return GetAssetResource(Constants.ALLY_UNITS_PREFABS_FOLDER_PATH + unitName);
     }
 }

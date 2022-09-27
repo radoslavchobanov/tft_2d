@@ -5,7 +5,7 @@ public static class Constants
     public const string ENEMY_UNIT_TAG = "EnemyUnit";
 
     public const string PREFABS_FOLDER_PATH = "Prefabs/";
-    public const string UNIT_PREFABS_FOLDER_PATH = PREFABS_FOLDER_PATH + "Units/";
+    public const string ALLY_UNITS_PREFABS_FOLDER_PATH = PREFABS_FOLDER_PATH + "Units/Ally/";
     public const string SPRITES_FOLDER_PATH = "Sprites/";
-    public const string UNIT_SPRITES_FOLDER_PATH = SPRITES_FOLDER_PATH + "Units/";
+    public const string ALLY_UNITS_SPRITES_FOLDER_PATH = SPRITES_FOLDER_PATH + "AllyUnits/";
 }
