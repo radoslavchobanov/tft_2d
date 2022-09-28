@@ -6,7 +6,9 @@ public partial class UnitManager
 {
     public void RegisterEvents()
     {
-        GameEvents.AllyUnitClicked.AddListener(OnAllyUnitClicked);
+        GameEvents.AllyUnitLeftClicked.AddListener(OnAllyUnitLeftClicked);
+        GameEvents.UnitRightClicked.AddListener(OnAllyUnitRightClicked);
+
         GameEvents.AllyTileClicked.AddListener(OnAllyTileClicked);
         GameEvents.AllyUnitBought.AddListener(OnAllyUnitBought);
         GameEvents.AllyUnitInstantiated.AddListener(OnAllyUnitInstantiated);
@@ -16,7 +18,7 @@ public partial class UnitManager
         GameEvents.BuyRoundStart.AddListener(OnBuyRoundStart);
     }
 
-    private void OnAllyUnitClicked(Unit clickedUnit)
+    private void OnAllyUnitLeftClicked(Unit clickedUnit)
     {
         if (IsAllyUnitSelected == false)
         {
@@ -29,6 +31,11 @@ public partial class UnitManager
             PlaceAllyUnit(SelectedUnit, clickedUnitTile);
             SelectAllyUnit(clickedUnit);
         }
+    }
+
+    private void OnAllyUnitRightClicked(Unit clickedUnit)
+    {
+        ToggleStatsWindow(clickedUnit);
     }
 
     private void OnAllyTileClicked(GameObject clickedTileObj)

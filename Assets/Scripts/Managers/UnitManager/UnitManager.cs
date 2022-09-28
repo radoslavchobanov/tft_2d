@@ -86,4 +86,9 @@ public partial class UnitManager : MonoBehaviour
         AllyUnitsStartPositions.TryGetValue(unit, out Tile startTile);
         unit.PlaceUnit(startTile);
     }
+
+    private void ToggleStatsWindow(Unit unit)
+    {
+        unit.StatsUIObject.SetActive(!unit.StatsUIObject.activeSelf);
+    }
 }

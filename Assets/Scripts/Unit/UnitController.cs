@@ -7,6 +7,7 @@ public partial class UnitController : MonoBehaviour
 {
     [Header("Object Components")]
     public Slider HpBar;
+    public GameObject StatsUIObject;
     [Header("Controller")]
     [SerializeField] private UnitState.State _currentState;
     [SerializeField] private Target _target;
@@ -28,17 +29,13 @@ public partial class UnitController : MonoBehaviour
 
     protected virtual void Awake()
     {
-        Target = new();
-        // initializing the StateController
-        StateController = new();
-        // initializing all the unit states  
-        UnitStates = new(this, StateController);
-
+        InitializeController();
         RegisterEvents();
     }
 
     protected virtual void Start()
     {
+        RoundResetUnit();
         // starting the StateController
         StateController.Start(UnitStates.IdleState);
     }
@@ -56,6 +53,17 @@ public partial class UnitController : MonoBehaviour
     protected virtual void LateUpdate()
     {
         StateController.CurrentState.AnimationUpdates();
+    }
+
+    private void InitializeController()
+    {
+        StatsUIObject.SetActive(false);
+
+        Target = new();
+        // initializing the StateController
+        StateController = new();
+        // initializing all the unit states  
+        UnitStates = new(this, StateController);
     }
 
     public void DetectNearestEnemy()
@@ -175,5 +183,8 @@ public partial class UnitController : MonoBehaviour
         gameObject.SetActive(true);
         Target.Remove();
         thisUnit.RoundResetAttributes();
+
+        HpBar.maxValue = thisUnit.HP;
+        HpBar.value = HpBar.maxValue;
     }
 }

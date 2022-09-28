@@ -35,6 +35,11 @@ public class GameManager : MonoBehaviour
     {
     }
 
+    public bool IsObjectUnit(GameObject obj)
+    {
+        return IsObjectAllyUnit(obj) || IsObjectEnemyUnit(obj);
+    }
+
     public bool IsObjectAllyUnit(GameObject obj)
     {
         return obj.CompareTag(Constants.ALLY_UNIT_TAG);

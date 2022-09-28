@@ -7,4 +7,5 @@ using UnityEngine.EventSystems;
 public class InputEvents
 {
     public UnityEvent<Vector2> MouseLeftClicked = new();
+    public UnityEvent<Vector2> MouseRightClicked = new();
 }
