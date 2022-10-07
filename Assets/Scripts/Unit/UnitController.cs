@@ -7,7 +7,7 @@ public partial class UnitController : MonoBehaviour
 {
     [Header("Object Components")]
     public Slider HpBar;
-    public GameObject StatsUIObject;
+    public UnitStatsPanelController UnitStatsPanelController;
     [Header("Controller")]
     [SerializeField] private UnitState.State _currentState;
     [SerializeField] private Target _target;
@@ -57,8 +57,6 @@ public partial class UnitController : MonoBehaviour
 
     private void InitializeController()
     {
-        StatsUIObject.SetActive(false);
-
         Target = new();
         // initializing the StateController
         StateController = new();

@@ -89,8 +89,9 @@ GameObject:
   - component: {fileID: 1593718049609006468}
   - component: {fileID: 479383034360555550}
   - component: {fileID: 1450219221534398255}
+  - component: {fileID: 7875543007663177787}
   m_Layer: 0
-  m_Name: Stats
+  m_Name: UnitStatsPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -158,6 +159,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7875543007663177787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403927240198182721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e60281ddd3583a479afa7f331cc27e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackDamageNumber: {fileID: 4621639661441022542}
+  AttackSpeedNumber: {fileID: 2091360958833077820}
+  MovementSpeedNumber: {fileID: 4168554970327799380}
+  AttackRangeNumber: {fileID: 667330614267659873}
 --- !u!1 &1478714588943553035
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,7 +689,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &518154926034710211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1165,7 +1182,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 2867952005473263350}
   m_HandleRect: {fileID: 0}

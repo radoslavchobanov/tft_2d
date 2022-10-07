@@ -114,12 +114,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HpBar: {fileID: 6627771899442655674}
-  StatsUIObject: {fileID: 1055955956925905745}
+  UnitStatsPanelController: {fileID: 8113180408051674155}
   _currentState: 0
   _target:
     _unit: {fileID: 0}
     _distance: Infinity
-    _direction: {x: 0, y: 0, z: 0}
   _occupiedTile: {fileID: 0}
   forwardDirection: {x: 0, y: 1, z: 0}
   timeForNextAttack: 0
@@ -259,11 +258,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edaf41285e81098438b824e54d01deac, type: 3}
---- !u!1 &1055955956925905745 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1403927240198182721, guid: edaf41285e81098438b824e54d01deac, type: 3}
-  m_PrefabInstance: {fileID: 2151667546997615632}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6463757520996973637 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4931339354247254101, guid: edaf41285e81098438b824e54d01deac, type: 3}
@@ -278,5 +272,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8113180408051674155 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7875543007663177787, guid: edaf41285e81098438b824e54d01deac, type: 3}
+  m_PrefabInstance: {fileID: 2151667546997615632}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e60281ddd3583a479afa7f331cc27e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

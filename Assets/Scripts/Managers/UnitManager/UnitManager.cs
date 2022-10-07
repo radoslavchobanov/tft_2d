@@ -89,6 +89,6 @@ public partial class UnitManager : MonoBehaviour
 
     private void ToggleStatsWindow(Unit unit)
     {
-        unit.StatsUIObject.SetActive(!unit.StatsUIObject.activeSelf);
+        unit.UnitStatsPanelController.Toggle(unit);
     }
 }

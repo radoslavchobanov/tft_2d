@@ -5,7 +5,7 @@ public class Target
 {
     [SerializeField] private Unit _unit;
     [SerializeField] private float _distance;
-    [SerializeField] private Vector3 _direction;
+    private Vector3 _direction;
 
     public static float DetectionRange = 15f;
 

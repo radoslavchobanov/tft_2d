@@ -114,12 +114,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HpBar: {fileID: 313452193211211717}
-  StatsUIObject: {fileID: 5837942954399175982}
+  UnitStatsPanelController: {fileID: 3401562347505418836}
   _currentState: 0
   _target:
     _unit: {fileID: 0}
     _distance: Infinity
-    _direction: {x: 0, y: 0, z: 0}
   _occupiedTile: {fileID: 0}
   forwardDirection: {x: 0, y: 1, z: 0}
   timeForNextAttack: 0
@@ -172,6 +171,10 @@ PrefabInstance:
     - target: {fileID: 4740690717787024155, guid: edaf41285e81098438b824e54d01deac, type: 3}
       propertyPath: m_Name
       value: UnitGUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4859926404122032471, guid: edaf41285e81098438b824e54d01deac, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4931339354247254101, guid: edaf41285e81098438b824e54d01deac, type: 3}
       propertyPath: m_Pivot.x
@@ -275,8 +278,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4931339354247254101, guid: edaf41285e81098438b824e54d01deac, type: 3}
   m_PrefabInstance: {fileID: 4791630224552149615}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &5837942954399175982 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1403927240198182721, guid: edaf41285e81098438b824e54d01deac, type: 3}
+--- !u!114 &3401562347505418836 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7875543007663177787, guid: edaf41285e81098438b824e54d01deac, type: 3}
   m_PrefabInstance: {fileID: 4791630224552149615}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e60281ddd3583a479afa7f331cc27e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
