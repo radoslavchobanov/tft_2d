@@ -70,9 +70,14 @@ public class GameManager : MonoBehaviour
         return Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
-    public static GameObject GetGameobjectBehindPoint(Vector2 point)
+    public static GameObject GetGameobjectBehindScreenPoint(Vector2 point)
     {
         return Physics.Raycast(Camera.main.ScreenPointToRay(point), out RaycastHit hit) ? hit.transform.gameObject : null;
+    }
+    
+    public static GameObject GetGameobjectBehindPoint(Vector2 point)
+    {
+        return Physics.Raycast(point, Vector3.forward, out RaycastHit hit) ? hit.transform.gameObject : null;
     }
 
     public static GameObject GetGameobjectInFrontPoint(Vector2 point)

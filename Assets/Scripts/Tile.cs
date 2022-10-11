@@ -15,6 +15,7 @@ public class Tile : MonoBehaviour
 
     public bool occupied = false;
     public bool IsBenchTile => _y == 0;
+    public bool busy = false;
 
     private void Awake()
     {
@@ -57,7 +58,6 @@ public class Tile : MonoBehaviour
         var tile = MapManager.GetTile(x, y);
         if (tile != null)
         {
-            Debug.Log("here");
             _neighbourTiles.Add(tile);
         }
     }

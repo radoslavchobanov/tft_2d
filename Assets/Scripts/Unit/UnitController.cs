@@ -8,6 +8,7 @@ public partial class UnitController : MonoBehaviour
     [Header("Object Components")]
     public Slider HpBar;
     public UnitStatsPanelController UnitStatsPanelController;
+    public PathFindingController PathFindingController;
     [Header("Controller")]
     [SerializeField] private UnitState.State _currentState;
     [SerializeField] private Target _target;
@@ -142,7 +143,28 @@ public partial class UnitController : MonoBehaviour
 
     public void MoveTowardsTarget()
     {
-        MoveTowardsDirection(Target.GetDirection());
+        if (GameManager.Singleton.UnitManager.USING_PATHFINDING == false)
+        {
+            MoveTowardsDirection(Target.GetDirection());
+        }
+        else
+        {
+            MoveToTile(PathFindingController.nextTile);
+        }
+    }
+
+    private IEnumerator MoveToTile(Tile tile)
+    {
+        tile.busy = true;
+
+        // movement stuff
+        while (Vector2.Distance(this.transform.position, tile.transform.position) >= 0.01f)
+        {
+            MoveTowardsDirection(tile.transform.position);
+            yield return null;
+        }
+
+        tile.busy = false;
     }
 
     public void AttackTarget()

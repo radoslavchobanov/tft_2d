@@ -160,6 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HpBar: {fileID: 6840605577377756336}
   UnitStatsPanelController: {fileID: 8467870602368411937}
+  PathFindingController: {fileID: 8483857030504638830}
   _currentState: 0
   _target:
     _unit: {fileID: 0}

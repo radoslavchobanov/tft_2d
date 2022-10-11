@@ -25,7 +25,7 @@ public class EventManager : MonoBehaviour
         if (EventSystem.current.IsPointerOverGameObject())
             return;
 
-        var clickedObj = GameManager.GetGameobjectBehindPoint(clickedPoint);
+        var clickedObj = GameManager.GetGameobjectBehindScreenPoint(clickedPoint);
         if (clickedObj == null)
         {
             Debug.Log("EventManager: No Object is clicked !");
@@ -49,7 +49,7 @@ public class EventManager : MonoBehaviour
         if (EventSystem.current.IsPointerOverGameObject())
             return;
 
-        var clickedObj = GameManager.GetGameobjectBehindPoint(clickedPoint);
+        var clickedObj = GameManager.GetGameobjectBehindScreenPoint(clickedPoint);
         if (clickedObj == null)
         {
             Debug.Log("EventManager: No Object is clicked !");
