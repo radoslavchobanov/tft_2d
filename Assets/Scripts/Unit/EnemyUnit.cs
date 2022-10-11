@@ -15,14 +15,13 @@ public class EnemyUnit : Unit
         GameManager.Singleton.UnitManager.EnemyUnits.Add(thisUnit);
 
         GameManager.Singleton.EventManager.GameEvents.BuyRoundStart.AddListener(OnBuyRoundStart);
+        
+        startTile = GameManager.Singleton.MapManager.GetTile(5, 7);
     }
 
     protected override void Start()
     {
         base.Start();
-
-        startTile = GameManager.Singleton.MapManager.GetTile(5, 7);
-        PlaceUnit(startTile);
     }
 
     private void OnBuyRoundStart()

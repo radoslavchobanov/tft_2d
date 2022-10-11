@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public partial class UnitManager
 {
@@ -91,6 +92,7 @@ public partial class UnitManager
 
     private void OnFightRoundStart()
     {
+        // store start positions of all the units on the battleground
         foreach (var unit in AllyUnitsOnBattleground)
         {
             AllyUnitsStartPositions.Add(unit, unit.OccupiedTile);
@@ -99,6 +101,7 @@ public partial class UnitManager
 
     private void OnBuyRoundStart()
     {
+        // place all units on the battleground on the starting positions
         foreach (var unit in AllyUnitsStartPositions.Keys)
         {
             RoundResetUnit(unit);

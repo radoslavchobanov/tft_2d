@@ -25,11 +25,11 @@ public partial class UnitManager : MonoBehaviour
 
     private void Awake()
     {
+        RegisterEvents();
     }
 
     private void Start()
     {
-        RegisterEvents();
     }
 
     private void Update()
@@ -84,7 +84,8 @@ public partial class UnitManager : MonoBehaviour
         unit.RoundResetUnit();
 
         AllyUnitsStartPositions.TryGetValue(unit, out Tile startTile);
-        unit.PlaceUnit(startTile);
+        if (startTile != null)
+            unit.PlaceUnit(startTile);
     }
 
     private void ToggleStatsWindow(Unit unit)
