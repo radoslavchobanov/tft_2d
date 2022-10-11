@@ -16,7 +16,7 @@ public class EnemyUnit : Unit
 
         GameManager.Singleton.EventManager.GameEvents.BuyRoundStart.AddListener(OnBuyRoundStart);
         
-        startTile = GameManager.Singleton.MapManager.GetTile(5, 7);
+        startTile = MapManager.GetTile(5, 7);
     }
 
     protected override void Start()

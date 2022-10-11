@@ -93,7 +93,7 @@ public partial class UnitController : MonoBehaviour
     public void SpawnUnit()
     {
         // Debug.Log("SpawnUnit: " + this);
-        PlaceUnit(GameManager.Singleton.MapManager.GetNextAvailableTileOnBench());
+        PlaceUnit(MapManager.GetNextAvailableTileOnBench());
 
         GameManager.Singleton.EventManager.GameEvents.AllyUnitSpawned.Invoke(thisUnit);
     }

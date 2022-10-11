@@ -97,5 +97,5 @@ public class Unit : UnitController
         }
     }
 
-    public bool CanBeSpawnedOnBench() => GameManager.Singleton.MapManager.GetNextAvailableTileOnBench() != null;
+    public bool CanBeSpawnedOnBench() => MapManager.GetNextAvailableTileOnBench() != null;
 }

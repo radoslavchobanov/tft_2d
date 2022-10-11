@@ -15,11 +15,11 @@ public partial class MapManager : MonoBehaviour
     public Material SelectableMaterial;
     public Material PointedMaterial;
 
-    public List<Tile> Tiles = new(); // All tiles
-    public List<Tile> AllyTiles = new(); // All Ally tiles
-    public List<Tile> AllyTilesOnBench = new(); // All Ally tiles on the bench
-    public List<Tile> AllyTilesOnBattleground = new(); // All Ally tiles on the battleground
-    public List<Tile> EnemyTiles = new(); // All Ally tiles
+    public static List<Tile> Tiles = new(); // All tiles
+    public static List<Tile> AllyTiles = new(); // All Ally tiles
+    public static List<Tile> AllyTilesOnBench = new(); // All Ally tiles on the bench
+    public static List<Tile> AllyTilesOnBattleground = new(); // All Ally tiles on the battleground
+    public static List<Tile> EnemyTiles = new(); // All Ally tiles
 
     private static Vector2 Graveyard = new Vector2(1000, 1000);
 
@@ -39,11 +39,9 @@ public partial class MapManager : MonoBehaviour
 
     private static void ChangeMaterialOnTiles(List<Tile> tileList, Material mat)
     {
-        MeshRenderer mesh = null;
         foreach (Tile tile in tileList)
         {
-            tile.TryGetComponent<MeshRenderer>(out mesh);
-            mesh.material = mat;
+            tile.ChangeMaterial(mat);
         }
     }
 
@@ -57,7 +55,7 @@ public partial class MapManager : MonoBehaviour
         ChangeMaterialOnTiles(AllyTiles, DefaultMaterial);
     }
 
-    public Tile GetNextAvailableTileOnBench()
+    public static Tile GetNextAvailableTileOnBench()
     {
         foreach (Tile tile in AllyTilesOnBench)
             if (tile.occupied == false)
@@ -65,7 +63,7 @@ public partial class MapManager : MonoBehaviour
         return null;
     }
 
-    public Tile GetTile(int x, int y)
+    public static Tile GetTile(int x, int y)
     {
         foreach (Tile tile in Tiles)
             if (tile.X == x && tile.Y == y)
