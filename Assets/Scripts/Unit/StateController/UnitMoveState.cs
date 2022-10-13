@@ -11,11 +11,15 @@ public class UnitMoveState : UnitState
     public override void Enter()
     {
         base.Enter();
+
+        UnitController.PathFindingController.Enable();
     }
 
     public override void Exit()
     {
         base.Exit();
+
+        UnitController.PathFindingController.Disable();
     }
 
     public override void LogicalUpdates()
@@ -33,7 +37,7 @@ public class UnitMoveState : UnitState
         base.PhysicalUpdates();
 
         if (UnitController.Target.GetUnit() == null)
-            UnitController.MoveForward(UnitController.forwardDirection);
+            UnitController.MoveForward();
         else
             UnitController.MoveTowardsTarget();
     }

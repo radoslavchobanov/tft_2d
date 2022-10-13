@@ -58,7 +58,7 @@ public partial class MapManager : MonoBehaviour
     public static Tile GetNextAvailableTileOnBench()
     {
         foreach (Tile tile in AllyTilesOnBench)
-            if (tile.occupied == false)
+            if (tile.IsOccupied == false)
                 return tile;
         return null;
     }

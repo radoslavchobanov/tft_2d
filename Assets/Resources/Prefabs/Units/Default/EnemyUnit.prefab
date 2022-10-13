@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12a87b518a1c846458796da402c39b7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextTile: {fileID: 0}
+  thisUnit: {fileID: 0}
 --- !u!1 &7396697710822506046
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,6 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HpBar: {fileID: 3856901375206243974}
   UnitStatsPanelController: {fileID: 2227921344273474327}
+  PathFindingController: {fileID: 5783356720642685447}
   _currentState: 0
   _target:
     _unit: {fileID: 0}

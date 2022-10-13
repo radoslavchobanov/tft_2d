@@ -1,3 +1,5 @@
+#define USING_PATHFINDING
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -133,38 +135,34 @@ public partial class UnitController : MonoBehaviour
     {
         var direction = new Vector3(dir.x, dir.y, 0);
         // transform.up = direction;
-        this.gameObject.transform.position += direction.normalized * thisUnit.MovementSpeed * Time.deltaTime;
+        this.gameObject.transform.position += direction.normalized * (thisUnit.MovementSpeed / 10) * Time.deltaTime;
     }
 
-    public void MoveForward(Vector2 forwardDirection)
+    public void MoveForward()
     {
         MoveTowardsDirection(forwardDirection);
     }
 
     public void MoveTowardsTarget()
     {
-        if (GameManager.Singleton.UnitManager.USING_PATHFINDING == false)
+#if !USING_PATHFINDING
+        MoveTowardsDirection(Target.GetDirection());
+#else
+        PathFindingController.Updates();
+#endif
+    }
+
+    public void MoveToTile(Tile tile)
+    {
+        if (Vector2.Distance(this.transform.position, tile.transform.position) <= 0.1f)
         {
-            MoveTowardsDirection(Target.GetDirection());
+            this.gameObject.transform.position = new Vector3(tile.transform.position.x, tile.transform.position.y, transform.position.z);
+            _occupiedTile = tile;
         }
         else
         {
-            MoveToTile(PathFindingController.nextTile);
+            MoveTowardsDirection(tile.transform.position - OccupiedTile.transform.position);
         }
-    }
-
-    private IEnumerator MoveToTile(Tile tile)
-    {
-        tile.busy = true;
-
-        // movement stuff
-        while (Vector2.Distance(this.transform.position, tile.transform.position) >= 0.01f)
-        {
-            MoveTowardsDirection(tile.transform.position);
-            yield return null;
-        }
-
-        tile.busy = false;
     }
 
     public void AttackTarget()

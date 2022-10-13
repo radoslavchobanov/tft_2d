@@ -9,8 +9,6 @@ public partial class UnitManager : MonoBehaviour
 
     private (bool, Unit) _allyUnitSelected = (false, null);
 
-    public bool USING_PATHFINDING = true;
-
     public List<Unit> Units = new(); // All units
     public List<Unit> AllyUnits = new(); // All Ally units
     public List<Unit> AllyUnitsOnBench = new(); // All Ally units on the bench

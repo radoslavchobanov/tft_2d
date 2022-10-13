@@ -13,9 +13,9 @@ public class Tile : MonoBehaviour
     public int Y => _y;
     public List<Tile> NeighbourTiles => _neighbourTiles;
 
-    public bool occupied = false;
+    public bool IsOccupied = false;
     public bool IsBenchTile => _y == 0;
-    public bool busy = false;
+    public bool IsBusy = false;
 
     private void Awake()
     {
@@ -28,8 +28,8 @@ public class Tile : MonoBehaviour
 
     private void Update()
     {
-        if (GetObjectOnTile() == null) occupied = false;
-        else occupied = true;
+        if (GetObjectOnTile() == null) IsOccupied = false;
+        else IsOccupied = true;
     }
 
     private void GetNeighbourTiles()

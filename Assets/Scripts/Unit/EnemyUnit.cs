@@ -15,8 +15,6 @@ public class EnemyUnit : Unit
         GameManager.Singleton.UnitManager.EnemyUnits.Add(thisUnit);
 
         GameManager.Singleton.EventManager.GameEvents.BuyRoundStart.AddListener(OnBuyRoundStart);
-        
-        startTile = MapManager.GetTile(5, 7);
     }
 
     protected override void Start()
@@ -27,6 +25,7 @@ public class EnemyUnit : Unit
     private void OnBuyRoundStart()
     {
         RoundResetUnit();
+        startTile = MapManager.GetTile(5, 7);
         PlaceUnit(startTile);
     }
 }
