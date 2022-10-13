@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UnitState
 {
-    protected UnitController UnitController;
+    protected UnitController thisUnit;
     protected UnitStateController StateController;
 
     protected float startTime;
@@ -20,7 +20,7 @@ public class UnitState
 
     public UnitState(UnitController unitController, UnitStateController stateController, State state)
     {
-        this.UnitController = unitController;
+        this.thisUnit = unitController;
         this.StateController = stateController;
         this._state = state;
     }
@@ -29,7 +29,7 @@ public class UnitState
     {
         // Debug.Log(UnitController.gameObject + " Enters " + _state);
 
-        UnitController.CurrentState = _state;
+        thisUnit.CurrentState = _state;
 
         startTime = Time.time;
     }

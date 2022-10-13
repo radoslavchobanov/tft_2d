@@ -12,34 +12,37 @@ public class UnitMoveState : UnitState
     {
         base.Enter();
 
-        UnitController.PathFindingController.Enable();
+        thisUnit.PathFindingController.Start();
     }
 
     public override void Exit()
     {
         base.Exit();
-
-        UnitController.PathFindingController.Disable();
     }
 
     public override void LogicalUpdates()
     {
         base.LogicalUpdates();
         
-        UnitController.DetectNearestEnemy();
+        thisUnit.DetectNearestEnemy();
 
-        if (UnitController.Target.GetUnit() != null && UnitController.Target.GetDistance() <= UnitController.thisUnit.AttackRange)
-            UnitController.StateController.ChangeState(UnitController.UnitStates.AttackState);
+        if (thisUnit.Target.GetUnit() != null && 
+            thisUnit.Target.GetDistance() <= thisUnit.thisUnit.AttackRange && 
+            thisUnit.PathFindingController.HasArrived == true)
+        {
+            thisUnit.OccupiedTile.IsBusy = false;
+            thisUnit.StateController.ChangeState(thisUnit.UnitStates.AttackState);
+        }
     }
 
     public override void PhysicalUpdates()
     {
         base.PhysicalUpdates();
 
-        if (UnitController.Target.GetUnit() == null)
-            UnitController.MoveForward();
+        if (thisUnit.Target.GetUnit() == null)
+            thisUnit.MoveForward();
         else
-            UnitController.MoveTowardsTarget();
+            thisUnit.MoveTowardsTarget();
     }
 
     public override void AnimationUpdates()

@@ -29,7 +29,7 @@ public class UnitSelectedState : UnitState
     {
         base.PhysicalUpdates();
 
-        UnitController.DragUnit(SELECTED_OFFSET);
+        thisUnit.DragUnit(SELECTED_OFFSET);
     }
 
     public override void AnimationUpdates()

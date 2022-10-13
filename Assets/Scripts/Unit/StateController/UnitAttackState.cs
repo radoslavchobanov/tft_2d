@@ -12,7 +12,7 @@ public class UnitAttackState : UnitState
     {
         base.Enter();
 
-        UnitController.timeForNextAttack = startTime + (1 / UnitController.thisUnit.AttackSpeed);
+        thisUnit.timeForNextAttack = startTime + (1 / thisUnit.thisUnit.AttackSpeed);
         // Debug.Log(UnitController.timeForNextAttack);
     }
 
@@ -25,10 +25,10 @@ public class UnitAttackState : UnitState
     {
         base.LogicalUpdates();
 
-        if (UnitController.Target.GetUnit().isDead == true)
+        if (thisUnit.Target.GetUnit().isDead == true)
         {
-            UnitController.Target.Remove();
-            StateController.ChangeState(UnitController.UnitStates.MoveState);
+            thisUnit.Target.Remove();
+            StateController.ChangeState(thisUnit.UnitStates.MoveState);
         }
     }
 
@@ -36,10 +36,10 @@ public class UnitAttackState : UnitState
     {
         base.PhysicalUpdates();
         
-        if (Time.time >= UnitController.timeForNextAttack && !UnitController.Target.GetUnit().isDead)
+        if (Time.time >= thisUnit.timeForNextAttack && !thisUnit.Target.GetUnit().isDead)
         {
-            UnitController.AttackTarget();
-            UnitController.timeForNextAttack = Time.time + (1 / UnitController.thisUnit.AttackSpeed);
+            thisUnit.AttackTarget();
+            thisUnit.timeForNextAttack = Time.time + (1 / thisUnit.thisUnit.AttackSpeed);
         }
     }
 
