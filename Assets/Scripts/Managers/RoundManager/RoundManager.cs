@@ -24,12 +24,12 @@ public partial class RoundManager : MonoBehaviour
         StateController = new();
 
         RoundStates = new(this, StateController);
-
-        RegisterEvents();
     }
 
     private void Start()
     {
+        RegisterEvents();
+        
         StateController.Start(RoundStates.BuyingState);
     }
 

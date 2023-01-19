@@ -5,7 +5,6 @@ using System.Linq;
 
 public partial class MapManager : MonoBehaviour
 {
-    private GameEvents GameEvents => GameManager.Singleton.EventManager.GameEvents;
     private MapController _mapController = new();
 
     public GameObject MapContent;

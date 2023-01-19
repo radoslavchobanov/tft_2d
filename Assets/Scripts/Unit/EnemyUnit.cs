@@ -12,17 +12,19 @@ public class EnemyUnit : Unit
 
         Type = UnitType.Enemy;
 
-        GameManager.Singleton.UnitManager.EnemyUnits.Add(thisUnit);
+        GameManager.Instance.UnitManager.EnemyUnits.Add(thisUnit);
 
-        GameManager.Singleton.EventManager.GameEvents.BuyRoundStart.AddListener(OnBuyRoundStart);
+        OnBuyRoundStart(new object());
     }
 
     protected override void Start()
     {
         base.Start();
+        
+        EventManager.Instance.Register(EventID.BuyRoundStart, OnBuyRoundStart);
     }
 
-    private void OnBuyRoundStart()
+    private void OnBuyRoundStart(object args)
     {
         RoundResetUnit();
         startTile = MapManager.GetTile(5, 7);

@@ -15,6 +15,6 @@ public class AllyUnit : Unit
     {
         base.Start();
 
-        GameManager.Singleton.EventManager.GameEvents.AllyUnitInstantiated.Invoke(this);
+        EventManager.Instance.Invoke(EventID.AllyUnitInstantiated, this);
     }
 }

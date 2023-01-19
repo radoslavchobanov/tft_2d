@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class StorePanelController : MonoBehaviour
 {
-    private StoreManager StoreManager => GameManager.Singleton.StoreManager;
+    private StoreManager StoreManager => GameManager.Instance.StoreManager;
 
     public List<StoreItemButton> StoreItemButtons;
     public Button RefreshStoreButton;
@@ -42,7 +42,7 @@ public class StorePanelController : MonoBehaviour
             ++i;
         }
 
-        GameManager.Singleton.EventManager.GameEvents.StoreRefreshed.Invoke();
+        EventManager.Instance.Invoke(EventID.StoreRefreshed);
     }
 
     private void DeactivateStoreItemButtons()

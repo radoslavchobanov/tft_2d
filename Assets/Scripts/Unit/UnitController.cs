@@ -33,11 +33,11 @@ public partial class UnitController : MonoBehaviour
     protected virtual void Awake()
     {
         InitializeController();
-        RegisterEvents();
     }
 
     protected virtual void Start()
     {
+        RegisterEvents();
         RoundResetUnit();
         // starting the StateController
         StateController.Start(UnitStates.IdleState);
@@ -69,7 +69,7 @@ public partial class UnitController : MonoBehaviour
 
     public void DetectNearestEnemy()
     {
-        var enemies = thisUnit.Type == UnitType.Enemy ? GameManager.Singleton.UnitManager.AllyUnits : GameManager.Singleton.UnitManager.EnemyUnits;
+        var enemies = thisUnit.Type == UnitType.Enemy ? GameManager.Instance.UnitManager.AllyUnits : GameManager.Instance.UnitManager.EnemyUnits;
 
         float shortestDistance = Mathf.Infinity;
 
@@ -98,7 +98,7 @@ public partial class UnitController : MonoBehaviour
         // Debug.Log("SpawnUnit: " + this);
         PlaceUnit(MapManager.GetNextAvailableTileOnBench());
 
-        GameManager.Singleton.EventManager.GameEvents.AllyUnitSpawned.Invoke(thisUnit);
+        EventManager.Instance.Invoke(EventID.AllyUnitSpawned, thisUnit);
     }
 
     public void SelectUnit()
@@ -109,7 +109,7 @@ public partial class UnitController : MonoBehaviour
 
         StateController.ChangeState(UnitStates.SelectedState);
 
-        GameManager.Singleton.EventManager.GameEvents.AllyUnitSelected.Invoke(thisUnit);
+        EventManager.Instance.Invoke(EventID.AllyUnitSelected, thisUnit);
     }
 
     public void PlaceUnit(Tile tile)
@@ -122,7 +122,7 @@ public partial class UnitController : MonoBehaviour
 
         StateController.ChangeState(UnitStates.IdleState);
 
-        GameManager.Singleton.EventManager.GameEvents.AllyUnitPlaced.Invoke(thisUnit, tile);
+        EventManager.Instance.Invoke(EventID.AllyUnitPlaced, (object)(thisUnit, tile));
     }
 
     public void DragUnit(float selectedOffset)

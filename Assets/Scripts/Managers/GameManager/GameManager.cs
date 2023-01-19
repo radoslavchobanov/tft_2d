@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Singleton;
+    public static GameManager Instance;
 
     public GameController GameController { get; private set; }
 
@@ -19,8 +19,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Singleton == null)
-            Singleton = this;
+        if (Instance == null)
+            Instance = this;
 
         GameController = this.GetComponent<GameController>();
         

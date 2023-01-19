@@ -32,7 +32,7 @@ public class StoreItem
         UnitPrefab.TryGetComponent<Unit>(out Unit unit);
         if (unit.CanBeSpawnedOnBench())
         {
-            GameManager.Singleton.EventManager.GameEvents.AllyUnitBought.Invoke(unit);
+            EventManager.Instance.Invoke(EventID.AllyUnitBought, unit);
         }
         else
         {

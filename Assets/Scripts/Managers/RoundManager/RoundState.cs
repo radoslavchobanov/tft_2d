@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class RoundState
 {
-    protected GameEvents GameEvents => GameManager.Singleton.EventManager.GameEvents;
-
     protected RoundManager RoundManager;
     protected RoundStateController StateController;
 

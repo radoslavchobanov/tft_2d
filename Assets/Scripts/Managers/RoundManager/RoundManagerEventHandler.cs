@@ -6,10 +6,10 @@ public partial class RoundManager
 {
     public void RegisterEvents()
     {
-        GameManager.Singleton.EventManager.UIEvents.ChangeGameStateButtonClicked.AddListener(OnChangeGameStateButtonClicked);
+        EventManager.Instance.Register(EventID.ChangeGameStateButtonClicked, OnChangeGameStateButtonClicked);
     }
 
-    private void OnChangeGameStateButtonClicked()
+    private void OnChangeGameStateButtonClicked(object args)
     {
         // Debug.Log("OnChangeGameStateButtonClicked");
 

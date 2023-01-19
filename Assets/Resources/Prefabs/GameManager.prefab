@@ -291,11 +291,6 @@ MonoBehaviour:
   DefaultMaterial: {fileID: 2100000, guid: 03e5d822b2846f34ba8ff337f97abec1, type: 2}
   SelectableMaterial: {fileID: 2100000, guid: 9ce408a0b12323d43b2f988431242972, type: 2}
   PointedMaterial: {fileID: 2100000, guid: 578a02295ec91a940b38eff512b06ead, type: 2}
-  Tiles: []
-  AllyTiles: []
-  AllyTilesOnBench: []
-  AllyTilesOnBattleground: []
-  EnemyTiles: []
 --- !u!1 &4983919496200344110
 GameObject:
   m_ObjectHideFlags: 0

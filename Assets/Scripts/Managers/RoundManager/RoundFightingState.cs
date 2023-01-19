@@ -12,9 +12,9 @@ public class RoundFightingState : RoundState
     {
         base.Enter();
 
-        GameManager.Singleton.RoundManager.IncreaseRoundCount();
+        GameManager.Instance.RoundManager.IncreaseRoundCount();
 
-        GameEvents.FightRoundStart.Invoke();
+        EventManager.Instance.Invoke(EventID.FightRoundStart);
     }
 
     public override void Exit()

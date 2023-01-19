@@ -19,6 +19,6 @@ public class UIManager : MonoBehaviour
 
     private void OnChangeGameStateButtonClick()
     {
-        GameManager.Singleton.EventManager.UIEvents.ChangeGameStateButtonClicked.Invoke();
+        EventManager.Instance.Invoke(EventID.ChangeGameStateButtonClicked);
     }
 }

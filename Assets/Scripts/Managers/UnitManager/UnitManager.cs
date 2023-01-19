@@ -5,8 +5,6 @@ using System.Linq;
 
 public partial class UnitManager : MonoBehaviour
 {
-    private GameEvents GameEvents => GameManager.Singleton.EventManager.GameEvents;
-
     private (bool, Unit) _allyUnitSelected = (false, null);
 
     public List<Unit> Units = new(); // All units
@@ -25,11 +23,11 @@ public partial class UnitManager : MonoBehaviour
 
     private void Awake()
     {
-        RegisterEvents();
     }
 
     private void Start()
     {
+        RegisterEvents();
     }
 
     private void Update()

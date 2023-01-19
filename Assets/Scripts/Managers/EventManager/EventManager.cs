@@ -2,66 +2,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System;
 
 public class EventManager : MonoBehaviour
 {
-    private InputEvents _inputEvents = new();
-    private GameEvents _gameEvents = new();
-    private UIEvents _uiEvents = new();
+    public static EventManager Instance => GameManager.Instance.EventManager;
 
-    public InputEvents InputEvents => _inputEvents;
-    public GameEvents GameEvents => _gameEvents;
-    public UIEvents UIEvents => _uiEvents;
+    private Dictionary<EventID, Action<object>> _events;
 
-    private void Awake()
+    private void Awake() 
     {
-        InputEvents.MouseLeftClicked.AddListener(OnMouseLeftClicked);
-        InputEvents.MouseRightClicked.AddListener(OnMouseRightClicked);
+        _events = new Dictionary<EventID, Action<object>>();
     }
 
-    private void OnMouseLeftClicked(Vector2 clickedPoint)
+    public void Register(EventID eventType, Action<object> action)
     {
-        // clicked over UI element
-        if (EventSystem.current.IsPointerOverGameObject())
-            return;
-
-        var clickedObj = GameManager.GetGameobjectBehindScreenPoint(clickedPoint);
-        if (clickedObj == null)
+        Action<object> thisAction;
+        if (_events.TryGetValue(eventType, out thisAction))
         {
-            Debug.Log("EventManager: No Object is clicked !");
-            return;
+            thisAction += action;
+            _events[eventType] = thisAction;
         }
-        // Debug.Log("EventManager: " + obj.name + " Clicked");
-
-        // check for clicked gameobject in the world
-        if (GameManager.Singleton.IsObjectAllyUnit(clickedObj))
+        else
         {
-            clickedObj.TryGetComponent<Unit>(out Unit unit);
-            GameEvents?.AllyUnitLeftClicked.Invoke(unit);
+            thisAction += action;
+            _events.Add(eventType, thisAction);
         }
-        else if (GameManager.Singleton.IsObjectAllyTile(clickedObj))
-            GameEvents?.AllyTileClicked.Invoke(clickedObj);
     }
 
-    private void OnMouseRightClicked(Vector2 clickedPoint)
+    public void Unregister(EventID eventType, Action<object> action)
     {
-        // clicked over UI element
-        if (EventSystem.current.IsPointerOverGameObject())
-            return;
-
-        var clickedObj = GameManager.GetGameobjectBehindScreenPoint(clickedPoint);
-        if (clickedObj == null)
+        Action<object> thisAction;
+        if (_events.TryGetValue(eventType, out thisAction))
         {
-            Debug.Log("EventManager: No Object is clicked !");
-            return;
+            thisAction -= action;
+            _events[eventType] = thisAction;
         }
-        // Debug.Log("EventManager: " + obj.name + " Clicked");
+    }
 
-        // check for clicked gameobject in the world
-        if (GameManager.Singleton.IsObjectUnit(clickedObj))
+    public void Invoke(EventID eventType, object message)
+    {
+        Action<object> thisAction;
+        if (_events.TryGetValue(eventType, out thisAction))
         {
-            clickedObj.TryGetComponent<Unit>(out Unit unit);
-            GameEvents?.UnitRightClicked.Invoke(unit);
+            thisAction.Invoke(message);
         }
+    }
+
+    public void Invoke(EventID eventType)
+    {
+        Invoke(eventType, null);
     }
 }

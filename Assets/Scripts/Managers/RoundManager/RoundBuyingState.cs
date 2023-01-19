@@ -12,7 +12,7 @@ public class RoundBuyingState : RoundState
     {
         base.Enter();
 
-        GameEvents.BuyRoundStart.Invoke();
+        EventManager.Instance.Invoke(EventID.BuyRoundStart);
     }
 
     public override void Exit()

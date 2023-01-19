@@ -7,20 +7,22 @@ public partial class UnitManager
 {
     public void RegisterEvents()
     {
-        GameEvents.AllyUnitLeftClicked.AddListener(OnAllyUnitLeftClicked);
-        GameEvents.UnitRightClicked.AddListener(OnAllyUnitRightClicked);
+        EventManager.Instance.Register(EventID.AllyUnitLeftClicked, OnAllyUnitLeftClicked);
+        EventManager.Instance.Register(EventID.UnitRightClicked, OnAllyUnitRightClicked);
 
-        GameEvents.AllyTileClicked.AddListener(OnAllyTileClicked);
-        GameEvents.AllyUnitBought.AddListener(OnAllyUnitBought);
-        GameEvents.AllyUnitInstantiated.AddListener(OnAllyUnitInstantiated);
-        GameEvents.AllyUnitSpawned.AddListener(OnAllyUnitSpawned);
+        EventManager.Instance.Register(EventID.AllyTileClicked, OnAllyTileClicked);
+        EventManager.Instance.Register(EventID.AllyUnitBought, OnAllyUnitBought);
+        EventManager.Instance.Register(EventID.AllyUnitInstantiated, OnAllyUnitInstantiated);
+        EventManager.Instance.Register(EventID.AllyUnitSpawned, OnAllyUnitSpawned);
 
-        GameEvents.FightRoundStart.AddListener(OnFightRoundStart);
-        GameEvents.BuyRoundStart.AddListener(OnBuyRoundStart);
+        EventManager.Instance.Register(EventID.FightRoundStart, OnFightRoundStart);
+        EventManager.Instance.Register(EventID.BuyRoundStart, OnBuyRoundStart);
     }
 
-    private void OnAllyUnitLeftClicked(Unit clickedUnit)
+    private void OnAllyUnitLeftClicked(object args)
     {
+        Unit clickedUnit = (Unit)args;
+
         if (IsAllyUnitSelected == false)
         {
             SelectAllyUnit(clickedUnit);
@@ -34,13 +36,16 @@ public partial class UnitManager
         }
     }
 
-    private void OnAllyUnitRightClicked(Unit clickedUnit)
+    private void OnAllyUnitRightClicked(object args)
     {
+        Unit clickedUnit = (Unit)args;
         ToggleStatsWindow(clickedUnit);
     }
 
-    private void OnAllyTileClicked(GameObject clickedTileObj)
+    private void OnAllyTileClicked(object args)
     {
+        GameObject clickedTileObj = (GameObject)args;
+
         Tile clickedTile = null;
         clickedTileObj.TryGetComponent<Tile>(out clickedTile);
         if (clickedTile == null)
@@ -71,26 +76,29 @@ public partial class UnitManager
         }
     }
 
-    private void OnAllyUnitBought(Unit boughtUnit)
+    private void OnAllyUnitBought(object args)
     {
+        Unit boughtUnit = (Unit)args;
         // Debug.Log("OnAllyUnitBought: " + boughtUnit.gameObject);
         InstantiateAllyUnit(boughtUnit);
     }
 
-    private void OnAllyUnitInstantiated(Unit instantiatedUnit)
+    private void OnAllyUnitInstantiated(object args)
     {
+        Unit instantiatedUnit = (Unit)args;
         // Debug.Log("OnAllyUnitInstantiated: " + instantiatedUnit.gameObject);
         SpawnAllyUnit(instantiatedUnit);
     }
 
-    private void OnAllyUnitSpawned(Unit spawnedUnit)
+    private void OnAllyUnitSpawned(object args)
     {
+        Unit spawnedUnit = (Unit)args;
         // Debug.Log("OnAllyUnitSpawned: " + spawnedUnit.gameObject);
 
         // TODO: check if there is other 2 same units ... and combine them for lvl 2 unit
     }
 
-    private void OnFightRoundStart()
+    private void OnFightRoundStart(object args)
     {
         // store start positions of all the units on the battleground
         foreach (var unit in AllyUnitsOnBattleground)
@@ -99,7 +107,7 @@ public partial class UnitManager
         }
     }
 
-    private void OnBuyRoundStart()
+    private void OnBuyRoundStart(object args)
     {
         // place all units on the battleground on the starting positions
         foreach (var unit in AllyUnitsStartPositions.Keys)

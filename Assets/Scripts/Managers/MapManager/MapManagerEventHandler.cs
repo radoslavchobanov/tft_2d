@@ -6,16 +6,16 @@ public partial class MapManager
 {   
     public void RegisterEvents()
     {
-        GameEvents.AllyUnitSelected.AddListener(OnAllyUnitSelected);
-        GameEvents.AllyUnitPlaced.AddListener(OnAllyUnitPlaced);
+        EventManager.Instance.Register(EventID.AllyUnitSelected, OnAllyUnitSelected);
+        EventManager.Instance.Register(EventID.AllyUnitPlaced, OnAllyUnitPlaced);
     }
 
-    private void OnAllyUnitSelected(Unit selectedUnit)
+    private void OnAllyUnitSelected(object args)
     {
         MakeAllyTilesSelectable();
     }
 
-    private void OnAllyUnitPlaced(Unit unit, Tile tile)
+    private void OnAllyUnitPlaced(object args)
     {
         ClearAllySelectableTiles();
     }
