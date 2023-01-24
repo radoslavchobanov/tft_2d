@@ -29,3 +29,23 @@ public enum EventID
     // UI Events
     ChangeGameStateButtonClicked,
 }
+
+public enum UIScreenID
+{
+    None,
+    Main,
+    SelectGameMode,
+    Settings,
+    Achievements,
+    UpgradeShop,
+    ComseticsShop,
+    Campaign,
+    Profile,
+    LoadingScreen,
+    Event,
+    Leaderboard,
+    SelectAvatarPopUp,
+    ChangeNamePopUp,
+    PVE,
+    PVP,
+}

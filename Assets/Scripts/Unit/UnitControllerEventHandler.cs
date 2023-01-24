@@ -11,7 +11,7 @@ public partial class UnitController
     }
     private void OnFightRoundStart(object args)
     {
-        // if (IsOnBench == false)
+        if (IsOnBench == false)
             StateController.ChangeState(UnitStates.MoveState);
     }
 
