@@ -1,7 +1,11 @@
 ## Overview
 **tft_2d** is an exciting project aiming to create a simplified version of Riot Games' popular game, Teamfight Tactics. In this game, you will experience thrilling battles on a hex-tiled terrain, where capsule units engage in strategic combat.
-## Features
 
+<img src="https://github.com/radoslavchobanov/tft_2d/assets/12681393/101f6afa-e9dc-4314-8905-42a72b4c939f" alt="Image" width="400" height="400">
+<img src="https://github.com/radoslavchobanov/tft_2d/assets/12681393/983bbfcb-92ee-4231-83b0-33a083a4e56b" alt="Image" width="400" height="400">
+<img src="https://github.com/radoslavchobanov/tft_2d/assets/12681393/88ddcb99-f5d6-4e7a-abbc-f62769392579" alt="Image" width="400" height="400">
+
+## Features
 - Captivating Capsule Units: The game features an array of captivating capsule units that form the core of your tactical army.
 - Strategic Hex Terrain: Battle takes place on a hex-tiled terrain, creating a dynamic and strategic battlefield.
 - Ally and Enemy Tiles: The hex tiles are divided equally into ally and enemy territories, setting the stage for epic confrontations.
